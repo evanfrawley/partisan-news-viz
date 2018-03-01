@@ -1,6 +1,7 @@
 # partisan-news-viz
 > [Cole](https://github.com/jessecoleman), [Ethan](https://github.com/aethanol), [Evan](https://github.com/evanfrawley)
-Final project for University of Washington's Interactive Data Visualization course
+
+> Final project for University of Washington's Interactive Data Visualization course
 
 ## Setting Up
 
@@ -16,7 +17,7 @@ $ npm install -g yo generator-idyll
 $ yo idyll
 ```
 
-There are plugins for code syntax for both [VSCode](https://marketplace.visualstudio.com/items?itemName=mathisonian.idyll-syntax) [Atom](https://atom.io/packages/language-idyll).
+There are plugins for code syntax for both [VSCode](https://marketplace.visualstudio.com/items?itemName=mathisonian.idyll-syntax) & [Atom](https://atom.io/packages/language-idyll).
 
 Read over the [syntax](http://idyll-lang.org/syntax) for the language.
 
