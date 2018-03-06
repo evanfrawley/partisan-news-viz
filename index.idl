@@ -1,37 +1,49 @@
 [meta title:"SIR Rumor Dynamics" description:"Modeling the spread of rumors on social networks" /]
 
+[var name:"sidePanelView" value:0 /]
+
+[section className:"topSection"]
+
+[waypoint]
 [Header
-  title:"SIR Rumor Dynamics"
-  subtitle:"Modeling the spread of rumors on social networks"
-  author:"Ethan Anderson, Cole Chamberlin, Evan Frawley"
-  authorLink:"https://github.com/evanfrawley/partisan-news-viz" /]
+  title:"Partisan News Viz"
+  subtitle:"Understanding Multipe Rumor Spreading Through SIR Models"
+  authors:`[
+      {name: "Evan Frawley", link: "https://github.com/evanfrawley"},
+      {name: "Ethan Anderson", link: "https://github.com/aethanol"},
+      {name: "Cole Chamberlin", link: "https://github.com/jessecoleman"}
+    ]`
+  /]
+  // authors:`[{name: "Evan Frawley", link: "https://github.com/evanfrawley"},{name: "Ethan Anderson", link: "https://github.com/aethanol"}]`/]
+[p onEnterViewFully:`sidePanelView = 1`]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus condimentum sapien quis eros cursus ultrices. Etiam dictum arcu vel elementum fermentum. Aenean ac consequat ex. Sed volutpat ipsum mollis urna ultricies tristique. Aliquam imperdiet sem quis sem aliquet, at maximus tellus fringilla. Pellentesque tristique, est eget porta condimentum, risus metus porttitor nulla, vitae tincidunt turpis magna a velit. Donec risus ex, hendrerit vel est quis, iaculis suscipit magna. Ut eleifend nulla id urna consequat scelerisque.
+[/p]
+[/waypoint]
 
-This is an Idyll file. Write text
-as you please in here. To add interactivity,
-you can add  different components to the text.
+[waypoint onEnterViewFully:`sidePanelView = 2`]
+[p]
+Nullam tristique dapibus condimentum. Mauris sed commodo enim. In pharetra nibh a elit vestibulum viverra. Curabitur eu posuere eros. Donec id faucibus mauris. Donec sollicitudin accumsan nisi in mattis. Suspendisse orci orci, interdum eu leo eget, varius pharetra orci.
 
-Here is how you can use a variable:
+Maecenas gravida accumsan ante eu consectetur. Proin dignissim sem et porta accumsan. Vestibulum purus lacus, tincidunt a tempor vel, iaculis eget justo. Donec aliquam sollicitudin mi vel tristique. Nunc nec vulputate urna, a viverra nibh. Aenean et nisi pretium, cursus lorem id, mattis eros. Nam rutrum justo lectus, at posuere sapien convallis rutrum. Nullam a efficitur elit, vel posuere mi. Vivamus mattis ac nisi id ultrices. Curabitur in felis et lectus imperdiet tempor.
+[/p]
+[/waypoint]
 
-[var name:"exampleVar" value:5 /]
+[waypoint onEnterViewFully:`sidePanelView = 3`]
+[p]
+Pellentesque tempor molestie dui pellentesque venenatis. Proin lacinia varius ligula vitae gravida. Phasellus hendrerit purus sit amet volutpat ultrices. Donec feugiat porta massa. Cras lacus lectus, congue at leo sit amet, malesuada cursus ipsum. Donec eget velit et velit placerat vulputate vitae sed enim. Mauris ac leo turpis.
+[/p]
+[/waypoint]
+[waypoint onEnterViewFully:`sidePanelView = 4`]
+[p]
+Praesent dictum interdum tortor ac ultricies. Suspendisse velit libero, fermentum at porta eget, dignissim non nisl. Sed lacus ipsum, ullamcorper eget magna eu, aliquam elementum ligula. Sed posuere orci magna, quis laoreet massa pharetra eget. Donec gravida lacus eu neque semper, ut rutrum lorem tempus. Vestibulum non tristique sapien. Mauris convallis eget sapien eget pharetra. Etiam convallis, neque eu euismod cursus, eros tortor porttitor dui, quis vehicula mauris tortor vitae sapien. Etiam consequat tincidunt cursus. Proin vehicula lacinia lectus. Duis nec tincidunt purus. Cras vel augue enim. Nulla fermentum eu eros id convallis. Morbi at felis convallis, tincidunt nulla non, pharetra quam. Proin porta odio ac leo posuere condimentum. Aenean a est ac ligula vehicula vestibulum.
+[/p]
+[/waypoint]
+[/section]
 
-[Range min:0 max:10 value:exampleVar /]
-[Display value:exampleVar /]
-
-```js
-var code = true;
-```
-
-And here is a custom component:
-
-[CustomComponent /]
-
-You can use standard html tags if a
-component with the same name
-doesn't exist.
-
-* *markdown* syntax is supported.
-
-[var name:"state" value:0 /]
-
-[CustomD3Component /]
-[FlowChart /]
+[fixed]
+[Display value:sidePanelView /]
+[Button onClick:`sidePanelView++`]
+Click
+[/Button]
+[SidePanel view:sidePanelView /]
+[/fixed]
