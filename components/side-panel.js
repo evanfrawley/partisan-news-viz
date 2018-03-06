@@ -1,6 +1,7 @@
 import React from 'react';
 import CustomD3Component from "./custom-d3-component";
 import FlowChart from "./flow-chart.js";
+import Graph from "./graph.js";
 import MathJaxComponent from "./math-jax-component.js";
 
 const equation1Text = String.raw`
@@ -43,7 +44,7 @@ class SidePanel extends React.Component {
         return (<MathJaxComponent tex={equation1Text} />)
       }
       case 3: {
-        return (<MathJaxComponent tex={equation2Text} />)
+        return (<Graph />)
       }
       default: {
         return (

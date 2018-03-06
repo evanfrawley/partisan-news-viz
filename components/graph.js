@@ -1,4 +1,4 @@
-const D3Component = require('idyll-d3-component');
+import D3Component from "idyll-d3-component";
 const d3 = require('d3');
 
 /*
@@ -195,8 +195,8 @@ class Graph extends D3Component {
             }
         };
     
-        this.linkGroup = graph.svg.append("g");
-        this.nodeGroup = graph.svg.append("g");
+        this.linkGroup = this.svg.append("g");
+        this.nodeGroup = this.svg.append("g");
 
         this.redraw();
 
@@ -348,4 +348,4 @@ class Graph extends D3Component {
     }
 }
 
-module.exports = Graph;
+export default Graph;
