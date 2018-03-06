@@ -5,12 +5,12 @@ class FlowChart extends D3Component {
 
     initialize(node, props) {
 
-    console.log("hello");
-    console.log(node);
-    console.log(props);
+        console.log("hello");
+        console.log(node);
+        console.log(props);
     
-        var svg = this.svg = d3.select(node).append("svg");
         var flow = {}
+        flow.svg = this.svg = d3.select(node).append("svg");
         flow.width = 400 // node.parentNode.attr("width");
         flow.height = 150;
         flow.svg = d3.select("#flowchart").append("svg")
@@ -199,6 +199,12 @@ class FlowChart extends D3Component {
                         .style("top", (d3.event.pageY) + "px");
                 });
         });
+
+        this.flow = flow
+    }
+
+    update(props) {
+        console.log("update");
     }
 }    
 
