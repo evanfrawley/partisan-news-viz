@@ -20,13 +20,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus condimentum sap
 [/p]
 [/waypoint]
 
-[waypoint onEnterViewFully:`sidePanelView = 2`]
+[FlowChart /]
+
+//[waypoint onEnterViewFully:`sidePanelView = 2`]
 [p]
 Nullam tristique dapibus condimentum. Mauris sed commodo enim. In pharetra nibh a elit vestibulum viverra. Curabitur eu posuere eros. Donec id faucibus mauris. Donec sollicitudin accumsan nisi in mattis. Suspendisse orci orci, interdum eu leo eget, varius pharetra orci.
 
 Maecenas gravida accumsan ante eu consectetur. Proin dignissim sem et porta accumsan. Vestibulum purus lacus, tincidunt a tempor vel, iaculis eget justo. Donec aliquam sollicitudin mi vel tristique. Nunc nec vulputate urna, a viverra nibh. Aenean et nisi pretium, cursus lorem id, mattis eros. Nam rutrum justo lectus, at posuere sapien convallis rutrum. Nullam a efficitur elit, vel posuere mi. Vivamus mattis ac nisi id ultrices. Curabitur in felis et lectus imperdiet tempor.
 [/p]
-[/waypoint]
+//[/waypoint]
 
 [waypoint onEnterViewFully:`sidePanelView = 3`]
 [p]

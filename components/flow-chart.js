@@ -5,21 +5,18 @@ class FlowChart extends D3Component {
 
     initialize(node, props) {
 
-        console.log("hello");
-        console.log(node);
-        console.log(props);
-    
-        var flow = {}
-        flow.svg = this.svg = d3.select(node).append("svg");
-        flow.width = 400 // node.parentNode.attr("width");
-        flow.height = 150;
-        flow.svg = d3.select("#flowchart").append("svg")
-            .attr("width", flow.width)
-            .attr("height", flow.height);
+        var width = 600; 
+        var height = 150;
+
+        var rectWidth = 80;
+        var rectHeight = 25;
+        var svg = d3.select(node).append("svg")
+            .attr("width", width)
+            .attr("height", height);
+      
+        var defs = svg.append("defs");
         
-        flow.defs = flow.svg.append("defs");
-        
-        flow.arrow = flow.defs
+        var arrow = defs
             .append("marker")
                 .attr("id", "arrow")
                 .attr("refX", 6)
@@ -34,157 +31,157 @@ class FlowChart extends D3Component {
                 .style("marker-end", "url(#arrow)")
                 .style("fill", "#000");
         
-        flow.ignorant = flow.svg.append("g")
+        var ignorant = svg.append("g")
             .attr("transform", "translate(" + 
-                (flow.width / 4) + "," + 
-                (flow.height / 2) + ")");
+                (width / 4) + "," + 
+                (height / 2) + ")");
         
-        flow.ignorant.append("rect")
-            .attr("x", -40)
-            .attr("y", -12.5)
-            .attr("width", 80)
-            .attr("height", 25)
+        ignorant.append("rect")
+            .attr("x", -rectWidth/2)
+            .attr("y", -rectHeight/2)
+            .attr("width", rectWidth)
+            .attr("height", rectHeight)
             .style("stroke", "black")
             .style("fill", "none");
         
-        flow.ignorant.append("text")
+        ignorant.append("text")
             .attr("id", "ignorant")
-            .attr("x", flow.ignorant.attr("height") / 2)
-            .attr("y", flow.ignorant.attr("width") / 2)
+            .attr("x", 0)
+            .attr("y", 0)
             .attr("dy", "0.4em")
             .attr("text-anchor", "middle")
             .text("Ignorant");
         
-        flow.spreader = flow.svg.append("g")
+        var spreader = svg.append("g")
             .attr("transform", "translate(" + 
-                (flow.width / 2) + "," + 
-                (flow.height / 2) + ")");
+                (width / 2) + "," + 
+                (height / 2) + ")");
         
-        flow.spreader.append("rect")
-            .attr("x", -40)
-            .attr("y", -12.5)
-            .attr("width", 80)
-            .attr("height", 25)
+        spreader.append("rect")
+            .attr("x", -rectWidth/2)
+            .attr("y", -rectHeight/2)
+            .attr("width", rectWidth)
+            .attr("height", rectHeight)
             .style("stroke", "black")
             .style("fill", "none");
-        
-        flow.spreader.append("text")
-            .attr("id", "ignorant")
-            .attr("x", flow.spreader.attr("height") / 2)
-            .attr("y", flow.spreader.attr("width") / 2)
+
+        spreader.append("text")
+            .attr("id", "spreader")
+            .attr("x", 0)
+            .attr("y", 0)
             .attr("dy", "0.4em")
             .attr("text-anchor", "middle")
             .text("Spreader");
         
-        flow.stifler = flow.svg.append("g")
+        var stifler = svg.append("g")
             .attr("transform", "translate(" + 
-                (3 * flow.width / 4) + "," + 
-                (flow.height / 2) + ")");
+                (3 * width / 4) + "," + 
+                (height / 2) + ")");
         
-        flow.stifler.append("rect")
-            .attr("x", -40)
-            .attr("y", -12.5)
-            .attr("width", 80)
-            .attr("height", 25)
+        stifler.append("rect")
+            .attr("x", -rectWidth/2)
+            .attr("y", -rectHeight/2)
+            .attr("width", rectWidth)
+            .attr("height", rectHeight)
             .style("stroke", "black")
             .style("fill", "none");
-        
-        flow.stifler.append("text")
-            .attr("id", "ignorant")
-            .attr("x", flow.ignorant.attr("height") / 2)
-            .attr("y", flow.ignorant.attr("width") / 2)
+
+       stifler.append("text")
+            .attr("id", "stifler")
+            .attr("x", 0)
+            .attr("y", 0)
             .attr("dy", "0.4em")
             .attr("text-anchor", "middle")
             .text("Stifler");
         
-        flow.x = d3.scaleLinear()
-            .range([0, flow.width])
+        var x = d3.scaleLinear()
+            .range([0, width])
             .domain([0, 1]);
         
-        flow.y = d3.scaleLinear()
-            .range([0, flow.height])
+        var y = d3.scaleLinear()
+            .range([0, height])
             .domain([0, 1]);
         
-        flow.line = d3.line()
+        var line = d3.line()
             .x((d) => { return d.x; })
             .y((d) => { return d.y; });
        
-        flow.params = {
+        var params = {
         
             "lambda": {
                 "data": [
-                    {"x": flow.x(0.25) + 40, "y": flow.y(0.5)},
-                    {"x": flow.x(0.5) - 40, "y": flow.y(0.5)},
+                    {"x": x(0.25) + 40, "y": y(0.5)},
+                    {"x": x(0.5) - 40, "y": y(0.5)},
                 ],
                 "text": "Spreader",
                 "symbol": "λ",
-                "x": flow.x(3/8),
-                "y": flow.y(3/8)
+                "x": x(3/8),
+                "y": y(3/8)
             },
         
             "oneMinusLambda": {
                 "data": [
-                    {"x": flow.x(0.25), "y": flow.y(0.5) + 25/2},
-                    {"x": flow.x(0.25), "y": flow.y(0.5) + 60},
-                    {"x": flow.x(0.75) + 80/4, "y": flow.y(0.5) + 60},
-                    {"x": flow.x(0.75) + 80/4, "y": flow.y(0.5) + 25/2}
+                    {"x": x(0.25), "y": y(0.5) + 25/2},
+                    {"x": x(0.25), "y": y(0.5) + 60},
+                    {"x": x(0.75) + 80/4, "y": y(0.5) + 60},
+                    {"x": x(0.75) + 80/4, "y": y(0.5) + 25/2}
                 ],
                 "text": "Spreader",
                 "symbol": "1 - λ",
-                "x": flow.x(3/8),
-                "y": flow.y(3/4)
+                "x": x(3/8),
+                "y": y(3/4)
             },
         
             "eta": {
                 "data": [
-                    {"x": flow.x(0.5), "y": flow.y(0.5) - 25/2},
-                    {"x": flow.x(0.5), "y": flow.y(0.5) - 40},
-                    {"x": flow.x(0.75), "y": flow.y(0.5) - 40},
-                    {"x": flow.x(0.75), "y": flow.y(0.5) - 25/2}
+                    {"x": x(0.5), "y": y(0.5) - 25/2},
+                    {"x": x(0.5), "y": y(0.5) - 40},
+                    {"x": x(0.75), "y": y(0.5) - 40},
+                    {"x": x(0.75), "y": y(0.5) - 25/2}
                 ],
                 "text": "Spreader",
                 "symbol": "η",
-                "x": flow.x(5/8),
-                "y": flow.y(1/8)
+                "x": x(5/8),
+                "y": y(1/8)
             },
         
             "gamma": {
                 "data": [
-                    {"x": flow.x(0.5) + 40, "y": flow.y(0.5)},
-                    {"x": flow.x(0.75) - 40, "y": flow.y(0.5)},
+                    {"x": x(0.5) + 40, "y": y(0.5)},
+                    {"x": x(0.75) - 40, "y": y(0.5)},
                 ],
                 "text": "Spreader",
                 "symbol": "γ",
-                "x": flow.x(5/8),
-                "y": flow.y(3/8)
+                "x": x(5/8),
+                "y": y(3/8)
              },
          
             "delta": {
                 "data": [
-                    {"x": flow.x(0.5), "y": flow.y(0.5) + 25/2},
-                    {"x": flow.x(0.5), "y": flow.y(0.5) + 40},
-                    {"x": flow.x(0.75) - 80/4, "y": flow.y(0.5) + 40},
-                    {"x": flow.x(0.75) - 80/4, "y": flow.y(0.5) + 25/2},
+                    {"x": x(0.5), "y": y(0.5) + 25/2},
+                    {"x": x(0.5), "y": y(0.5) + 40},
+                    {"x": x(0.75) - 80/4, "y": y(0.5) + 40},
+                    {"x": x(0.75) - 80/4, "y": y(0.5) + 25/2},
                 ],
                 "text": "Spreader",
                 "symbol": "δ",
-                "x": flow.x(5/8),
-                "y": flow.y(5/8)
+                "x": x(5/8),
+                "y": y(5/8)
              }
         };
     
-        Object.keys(flow.params).forEach(function(p) {
-            param = flow.params[p];
+        Object.keys(params).forEach(function(p) {
+            var param = params[p];
         
-            flow.svg.append("path")
+            svg.append("path")
                 .attr("stroke", "#000")
                 .attr("marker-end", "url(#arrow)")
                 .attr("stroke-width", "1px")
                 .attr("fill", "none")
                 .datum(param.data)
-                .attr("d", flow.line);
+                .attr("d", line);
         
-            flow.svg.append("text")
+            svg.append("text")
                 .attr("x", param.x)
                 .attr("y", param.y)
                 .attr("dy", "0.4em")
@@ -193,14 +190,13 @@ class FlowChart extends D3Component {
                 .on("click", function(d) {
                     console.log(d3.event.pageX);
                     console.log(d3.event.pageY);
-                    flow.paramSlider
+                    paramSlider
                         .attr("opacity", 1)
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY) + "px");
                 });
         });
 
-        this.flow = flow
     }
 
     update(props) {
