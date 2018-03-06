@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "d3": "^4.0.0",
+    "d3-color": "^1.0.3",
+    "d3-scale-chromatic": "^1.2.0",
     "idyll": "^2.1.7",
     "idyll-d3-component": "^2.0.3",
     "react-mathjax-preview": "^0.1.9"
