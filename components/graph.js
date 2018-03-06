@@ -82,7 +82,7 @@ class Graph extends D3Component {
                 graph_data.nodes[l.target].neighbors.push(l.source);
             });
         
-            var links = linkGroup.selectAll("line")
+            var links = this.linkGroup.selectAll("line")
                 .data(graph_data.links)
     
             console.log(6);
@@ -106,7 +106,7 @@ class Graph extends D3Component {
                 .range([4, 7])
                 .domain(d3.extent(graph_data.nodes, function(node) { return node.rank; }));
     
-            var nodes = nodeGroup
+            var nodes = this.nodeGroup
                 .selectAll("circle")
                 .data(graph_data.nodes);
     
