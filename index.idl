@@ -1,6 +1,6 @@
 [meta title:"SIR Rumor Dynamics" description:"Modeling the spread of rumors on social networks" /]
 
-[var name:"sidePanelView" value:0 /]
+[var name:"sidePanelView" value:1 /]
 
 [section className:"topSection"]
 
@@ -16,7 +16,27 @@
   /]
   // authors:`[{name: "Evan Frawley", link: "https://github.com/evanfrawley"},{name: "Ethan Anderson", link: "https://github.com/aethanol"}]`/]
 [p onEnterViewFully:`sidePanelView = 1`]
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus condimentum sapien quis eros cursus ultrices. Etiam dictum arcu vel elementum fermentum. Aenean ac consequat ex. Sed volutpat ipsum mollis urna ultricies tristique. Aliquam imperdiet sem quis sem aliquet, at maximus tellus fringilla. Pellentesque tristique, est eget porta condimentum, risus metus porttitor nulla, vitae tincidunt turpis magna a velit. Donec risus ex, hendrerit vel est quis, iaculis suscipit magna. Ut eleifend nulla id urna consequat scelerisque.
+# Why Should We Care?
+
+## What are rumors?
+
+[Quote]
+A rumor, in general, refers to an unverified account or explanation of events circulating from person to person and pertaining to an object, event, or issue of public concern.
+
+[link href:"https://www.sciencedirect.com/science/article/pii/S037843711200934X#br000005"]Source[/link]
+[/Quote]
+
+## Why do people spread rumors?
+
+[Quote]
+Spreading rumors has many sociological causes, but well studied is its use as a form of social cognition, where people come across novel pieces of information, or rumors and share them with others as an attempt to reduce anxiety and uncertainty. This is especially found in termed **dread** rumors, which refer to some fearsome, or undesirable event. **These dread rumors are spread at a much higher rate than wish rumors** which denote a positive outlook on the rumor context. DiFonzo et al. showed how people come across a rumor, and in order to make sense of the information, they share these dread rumors with other people.
+
+(Source: DiFonzo, P. B. and N. (2014). Problem in Social Interactions on the Internet : Solving Rumor As Social Cognition *, 67(1), 33–49.)
+[/Quote]
+
+## Why are rumors important to study?
+
+
 [/p]
 [/waypoint]
 

@@ -20,7 +20,7 @@ class CustomD3Component extends D3Component {
 
   update(props) {
     this.svg.selectAll('circle')
-      .transition()
+      .transition()// XXX:
       .duration(750)
       .attr('cx', Math.random() * size)
       .attr('cy', Math.random() * size);
