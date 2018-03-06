@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomD3Component from "./custom-d3-component";
 
 class SidePanel extends React.Component {
   constructor() {
@@ -23,7 +24,9 @@ class SidePanel extends React.Component {
         return (<div>third</div>)
       }
       default: {
-        return (<div>default</div>)
+        return (
+            <CustomD3Component />
+        )
       }
     }
   }

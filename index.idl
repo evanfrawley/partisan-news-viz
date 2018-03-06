@@ -41,9 +41,6 @@ Praesent dictum interdum tortor ac ultricies. Suspendisse velit libero, fermentu
 [/section]
 
 [fixed]
-[Display value:sidePanelView /]
-[Button onClick:`sidePanelView++`]
-Click
-[/Button]
-[SidePanel view:sidePanelView /]
+// [SidePanel view:sidePanelView /]
+[FlowChart /]
 [/fixed]
