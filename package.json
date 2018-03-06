@@ -8,9 +8,10 @@
     "deploy": "npm run build && gh-pages -d ./build"
   },
   "dependencies": {
+    "d3": "^4.0.0",
     "idyll": "^2.1.7",
     "idyll-d3-component": "^2.0.3",
-    "d3": "^4.0.0"
+    "react-mathjax-preview": "^0.1.9"
   },
   "devDependencies": {
     "gh-pages": "^0.12.0"
