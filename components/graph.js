@@ -235,7 +235,7 @@ class Graph extends D3Component {
         if (this.rumor == 0) {
             this.startInterval();
         }
-        d3.select(d3.event.target).attr("fill", interpolateReds(Math.pow(1 - (1 / Math.pow(2, node.spreading+1)), 2)));
+        d3.select(d3.event.target).attr("fill", "red"); //interpolateReds(Math.pow(1 - (1 / Math.pow(2, node.spreading+1)), 2)));
         this.rumor++;
 
         this.rumorStates[this.rumor] = {};
@@ -415,7 +415,7 @@ class Graph extends D3Component {
             // update chart data
             Object.keys(this.charts).forEach((r) => {
 
-                chart = this.charts[r];
+                let chart = this.charts[r];
 
                 chart.data.ignorant.push({"iter": this.iter, "count": this.rumorStates[r].ignorant});
                 chart.data.spreading.push({"iter": this.iter, "count": this.rumorStates[r].spreading});
@@ -453,7 +453,7 @@ class Graph extends D3Component {
     setNodeFill = (nodes) => {
         nodes.style("fill", (node) => {
             if (this.selectedRumor == -1) {
-                return d3.interpolateReds(Math.pow(1 - (1 / Math.pow(2, node.spreading)), 2));
+                return "red"; //d3.interpolateReds(Math.pow(1 - (1 / Math.pow(2, node.spreading)), 2));
             } else if (node.rumors[this.selectedRumor] == "spreader") {
                 return "#E57373";
             } else if (node.rumors[this.selectedRumor] == "stifler") {
