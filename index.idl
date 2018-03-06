@@ -21,6 +21,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus condimentum sap
 [/waypoint]
 
 [FlowChart /]
+[Graph /]
 
 //[waypoint onEnterViewFully:`sidePanelView = 2`]
 [p]

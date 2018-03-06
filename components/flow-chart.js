@@ -116,57 +116,57 @@ class FlowChart extends D3Component {
                 "text": "Spreader",
                 "symbol": "λ",
                 "x": x(3/8),
-                "y": y(3/8)
+                "y": y(1/2)
             },
         
             "oneMinusLambda": {
                 "data": [
-                    {"x": x(0.25), "y": y(0.5) + rectHeight/2},
-                    {"x": x(0.25), "y": y(7/8) },
-                    {"x": x(0.75) + rectWidth/4, "y": y(7/8) },
-                    {"x": x(0.75) + rectWidth/4, "y": y(0.5) + rectHeight/2 }
+                    {"x": x(1/4), "y": y(1/2) + rectHeight/2},
+                    {"x": x(1/4), "y": y(7/8) },
+                    {"x": x(3/4) + rectWidth/4, "y": y(7/8) },
+                    {"x": x(3/4) + rectWidth/4, "y": y(1/2) + rectHeight/2 }
                 ],
                 "text": "Spreader",
                 "symbol": "1 - λ",
                 "x": x(3/8),
-                "y": y(3/4)
+                "y": y(7/8)
             },
         
             "eta": {
                 "data": [
-                    {"x": x(0.5), "y": y(0.5) - 25/2},
-                    {"x": x(0.5), "y": y(0.5) - 40},
-                    {"x": x(0.75), "y": y(0.5) - 40},
-                    {"x": x(0.75), "y": y(0.5) - 25/2}
+                    {"x": x(1/2), "y": y(1/2) - rectHeight/2},
+                    {"x": x(1/2), "y": y(1/4) },
+                    {"x": x(3/4), "y": y(1/4) },
+                    {"x": x(3/4), "y": y(1/2) - rectHeight/2},
                 ],
                 "text": "Spreader",
                 "symbol": "η",
                 "x": x(5/8),
-                "y": y(1/8)
+                "y": y(1/4)
             },
         
             "gamma": {
                 "data": [
-                    {"x": x(0.5) + 40, "y": y(0.5)},
-                    {"x": x(0.75) - 40, "y": y(0.5)},
+                    {"x": x(1/2) + rectWidth/2, "y": y(1/2)},
+                    {"x": x(3/4) - rectWidth/2, "y": y(1/2)},
                 ],
                 "text": "Spreader",
                 "symbol": "γ",
                 "x": x(5/8),
-                "y": y(3/8)
+                "y": y(1/2)
              },
          
             "delta": {
                 "data": [
-                    {"x": x(0.5), "y": y(0.5) + 25/2},
-                    {"x": x(0.5), "y": y(0.5) + 40},
-                    {"x": x(0.75) - 80/4, "y": y(0.5) + 40},
-                    {"x": x(0.75) - 80/4, "y": y(0.5) + 25/2},
+                    {"x": x(1/2), "y": y(1/2) + rectHeight/2},
+                    {"x": x(1/2), "y": y(3/4)},
+                    {"x": x(3/4) - rectWidth/4, "y": y(3/4)},
+                    {"x": x(3/4) - rectWidth/4, "y": y(1/2) + rectHeight/2},
                 ],
                 "text": "Spreader",
                 "symbol": "δ",
                 "x": x(5/8),
-                "y": y(5/8)
+                "y": y(3/4)
              }
         };
     
@@ -184,7 +184,7 @@ class FlowChart extends D3Component {
             svg.append("text")
                 .attr("x", param.x)
                 .attr("y", param.y)
-                .attr("dy", "0.4em")
+                .attr("dy", "-0.7em")
                 .attr("text-anchor", "middle")
                 .text(param.symbol)
                 .on("click", function(d) {
