@@ -1,10 +1,10 @@
-[meta title:"Partisan News Viz" description:"Short description of your project" /]
+[meta title:"SIR Rumor Dynamics" description:"Modeling the spread of rumors on social networks" /]
 
 [Header
-  title:"Partisan News Viz"
-  subtitle:"Welcome to Idyll. Open index.idl to start writing"
-  author:"Your Name Here"
-  authorLink:"https://idyll-lang.github.io" /]
+  title:"SIR Rumor Dynamics"
+  subtitle:"Modeling the spread of rumors on social networks"
+  author:"Ethan Anderson, Cole Chamberlin, Evan Frawley"
+  authorLink:"https://github.com/evanfrawley/partisan-news-viz" /]
 
 This is an Idyll file. Write text
 as you please in here. To add interactivity,
@@ -33,7 +33,5 @@ doesn't exist.
 
 [var name:"state" value:0 /]
 
-[CustomD3Component state:state /]
-[button onClick:`state++`]
-  Click Me.
-[/button]
+[CustomD3Component /]
+[FlowChart /]
