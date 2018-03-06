@@ -1,8 +1,8 @@
 import React from 'react';
 import CustomD3Component from "./custom-d3-component";
 import FlowChart from "./flow-chart.js";
-import Graph from "./graph.js";
 import MathJaxComponent from "./math-jax-component.js";
+import Graph from "./graph.js";
 
 const equation1Text = String.raw`
 $$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$$
@@ -21,12 +21,6 @@ $$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$$
 `;
 
 class SidePanel extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      v: "none",
-    }
-  }
   render() {
     let view = this.props.view;
     switch(view) {
