@@ -110,8 +110,8 @@ class FlowChart extends D3Component {
         
             "lambda": {
                 "data": [
-                    {"x": x(0.25) + 40, "y": y(0.5)},
-                    {"x": x(0.5) - 40, "y": y(0.5)},
+                    {"x": x(0.25) + rectWidth/2, "y": y(0.5)},
+                    {"x": x(0.5) - rectWidth/2, "y": y(0.5)},
                 ],
                 "text": "Spreader",
                 "symbol": "λ",
@@ -121,10 +121,10 @@ class FlowChart extends D3Component {
         
             "oneMinusLambda": {
                 "data": [
-                    {"x": x(0.25), "y": y(0.5) + 25/2},
-                    {"x": x(0.25), "y": y(0.5) + 60},
-                    {"x": x(0.75) + 80/4, "y": y(0.5) + 60},
-                    {"x": x(0.75) + 80/4, "y": y(0.5) + 25/2}
+                    {"x": x(0.25), "y": y(0.5) + rectHeight/2},
+                    {"x": x(0.25), "y": y(7/8) },
+                    {"x": x(0.75) + rectWidth/4, "y": y(7/8) },
+                    {"x": x(0.75) + rectWidth/4, "y": y(0.5) + rectHeight/2 }
                 ],
                 "text": "Spreader",
                 "symbol": "1 - λ",
