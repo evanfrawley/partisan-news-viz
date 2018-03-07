@@ -8,7 +8,7 @@ class Header extends React.PureComponent {
         end = ""
       }
       return (
-        <span key={author.name}><a href={author.link}>{author.name}</a>{end} </span>
+        <span key={author.name}><a target="_blank" href={author.link}>{author.name}</a>{end} </span>
       );
     });
   }
