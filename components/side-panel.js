@@ -49,13 +49,16 @@ class SidePanel extends React.Component {
       case 5: {
         return (<MathJaxComponent tex={equation2Text} />)
       }
-      case 6: {
-        return (<MathJaxComponent tex={equation2Text} />)
+      case "equations": {
+        return (
+          <div>
+            <MathJaxComponent tex={equation1Text} />
+            <MathJaxComponent tex={equation2Text} />
+            <MathJaxComponent tex={equation3Text} />
+          </div>
+        )
       }
-      case 7: {
-        return (<MathJaxComponent tex={equation3Text} />)
-      }
-      default: {
+      case "sliders": {
         return (
           <Graph
             gamma={this.props.gamma}
@@ -65,6 +68,11 @@ class SidePanel extends React.Component {
             cluster={this.props.cluster}
             density={this.props.density}
           />
+        )
+      }
+      default: {
+        return (
+          null
         )
       }
     }

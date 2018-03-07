@@ -39,8 +39,8 @@ acorn@^4.0.3:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.13.tgz#105495ae5361d697bd195c825192e1ad7f253787"
 
 acorn@^5.0.0, acorn@^5.2.1, acorn@^5.4.1:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.5.0.tgz#1abb587fbf051f94e3de20e6b26ef910b1828298"
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.5.1.tgz#84e05a9ea0acbe131227da50301e62464dc9c1d8"
 
 after@0.8.2:
   version "0.8.2"
@@ -1169,8 +1169,8 @@ camelcase@^4.1.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
 caniuse-lite@^1.0.30000792:
-  version "1.0.30000812"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000812.tgz#d173b686b49bc941fa18ff2e7e533048e20ed92c"
+  version "1.0.30000813"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000813.tgz#7b25e27fdfb8d133f3c932b01f77452140fcc6c9"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -1854,8 +1854,8 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
 electron-to-chromium@^1.3.30:
-  version "1.3.34"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.34.tgz#d93498f40391bb0c16a603d8241b9951404157ed"
+  version "1.3.36"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.36.tgz#0eabf71a9ebea9013fb1cc35a390e068624f27e8"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -2483,7 +2483,7 @@ iconv-lite@0.4, iconv-lite@~0.4.13:
   version "0.4.19"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
 
-idyll-compiler@^2.3.0:
+idyll-compiler@^2.1.1:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/idyll-compiler/-/idyll-compiler-2.3.0.tgz#7c1e9a9784537dd590332f6340538359bc79c467"
   dependencies:
@@ -2492,7 +2492,7 @@ idyll-compiler@^2.3.0:
     nearley "^2.7.12"
     smartquotes "^2.0.0"
 
-idyll-components@^2.3.0:
+idyll-components@^2.0.3, idyll-components@^2.1.6:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/idyll-components/-/idyll-components-2.3.0.tgz#78a34a1a1d4c5fa584a10a51e69224a9d5a83fc4"
   dependencies:
@@ -2511,7 +2511,7 @@ idyll-d3-component@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/idyll-d3-component/-/idyll-d3-component-2.0.3.tgz#79c4fbbbe5e5d59d9e61e16529b433923b6f6dfe"
 
-idyll-document@^2.3.0:
+idyll-document@^2.1.7:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/idyll-document/-/idyll-document-2.3.0.tgz#b42f0760503d3e74f41d7c408ebd8575a6bf7430"
   dependencies:
@@ -2527,7 +2527,7 @@ idyll-document@^2.3.0:
     scrollparent "^2.0.1"
     styled-jsx "^2.2.4"
 
-idyll-layouts@^2.3.0:
+idyll-layouts@^2.1.1, idyll-layouts@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/idyll-layouts/-/idyll-layouts-2.3.0.tgz#bc1f6e9f72c36d8fdc96bad7a9f8ef1831a05357"
 
@@ -2535,9 +2535,9 @@ idyll-themes@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/idyll-themes/-/idyll-themes-2.1.1.tgz#43a72f5f17ac92a667155762376183fa7655070c"
 
-idyll@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/idyll/-/idyll-2.3.0.tgz#5e66d03a4f2b49cb3b712aa3e033a131c90c9a5d"
+idyll@2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/idyll/-/idyll-2.1.7.tgz#2bde19e1a39424f1d8baf2e5a647fe464583a31a"
   dependencies:
     babel-preset-env "^1.6.0"
     babel-preset-react "^6.22.0"
@@ -2553,10 +2553,10 @@ idyll@^2.3.0:
     dev-null "^0.1.1"
     findup-sync "^1.0.0"
     html-tags "^1.1.1"
-    idyll-compiler "^2.3.0"
-    idyll-components "^2.3.0"
-    idyll-document "^2.3.0"
-    idyll-layouts "^2.3.0"
+    idyll-compiler "^2.1.1"
+    idyll-components "^2.1.6"
+    idyll-document "^2.1.7"
+    idyll-layouts "^2.1.1"
     idyll-themes "^2.1.1"
     insert-css "^2.0.0"
     mkdirp "^0.5.1"
@@ -3151,10 +3151,6 @@ module-deps@^4.0.8:
     through2 "^2.0.0"
     xtend "^4.0.0"
 
-moo@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/moo/-/moo-0.4.3.tgz#3f847a26f31cf625a956a87f2b10fbc013bfd10e"
-
 ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
@@ -3180,10 +3176,9 @@ nan@^2.3.0:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.9.2.tgz#f564d75f5f8f36a6d9456cca7a6c4fe488ab7866"
 
 nearley@^2.7.12:
-  version "2.12.1"
-  resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.12.1.tgz#589cc3f883f5f873902b719838abd45af57b2d69"
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.13.0.tgz#6e7b0f4e68bfc3e74c99eaef2eda39e513143439"
   dependencies:
-    moo "^0.4.3"
     nomnom "~1.6.2"
     railroad-diagrams "^1.0.0"
     randexp "0.4.6"

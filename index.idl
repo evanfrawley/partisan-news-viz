@@ -27,7 +27,7 @@ Spreading rumors has many sociological causes, but well studied is its use as a 
 
 [/p]
 [/waypoint]
-[waypoint onEnterViewFully:`sidePanelView = 2`]
+[waypoint onEnterViewFully:`sidePanelView = "equations"`]
 [p]
 # Simulating Rumor Transmission with SIR
 SIR, or Susceptible, Infected, and Recovered is an epidemiological model which has been widely applied to rumoring theory, and the way that people spread pieces of information across social networks. (Daley and Kendall, Nekovee et al, and Zhao et al) Like vectors of disease, vectors of rumor too can be spread by contact between people in a social network.

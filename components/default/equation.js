@@ -4,10 +4,6 @@ const Latex = require('react-latex-patched');
 const select = require('d3-selection').select;
 const format = require('d3-format').format;
 
-if (typeof document !== 'undefined') {
-  document.write('<link href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css" rel="stylesheet">');
-}
-
 const allowedProps = ['domain', 'step', 'children'];
 
 class Equation extends React.PureComponent {
@@ -26,6 +22,11 @@ class Equation extends React.PureComponent {
 
   componentDidMount() {
     let dom;
+
+    if (typeof document !== 'undefined') {
+      document.write('<link href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" rel="stylesheet">');
+    }
+
     try {
       dom = ReactDOM.findDOMNode(this);
     } catch(e) {};
@@ -45,11 +46,9 @@ class Equation extends React.PureComponent {
           $this.style('cursor', 'pointer');
           $this.on('mouseover', () => {
             $this.style('color', 'red');
-            $this.style('cursor', 'pointer');
           }).on('mouseout', () => {
             if (!(self.state.showRange && self.state.var === prop)) {
               $this.style('color', 'black');
-              $this.style('cursor', 'default');
             }
           }).on('click', () => {
 
