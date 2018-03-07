@@ -2,22 +2,19 @@ import React from 'react';
 import CustomD3Component from "./custom-d3-component";
 import FlowChart from "./flow-chart.js";
 import MathJaxComponent from "./math-jax-component.js";
+import Equation from "./default/equation.js";
 import Graph from "./graph.js";
 
 const equation1Text = String.raw`
-$$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$$
-
-$$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$$
-
-$$\lim_{x \to \infty} \exp(-x) = 0$$
-
-$$k_{n+1} = n^2 + k_n^2 - k_{n-1}$$
-
-$$k_{n+1} = n^2 + k_n^2 - k_{n-1}$$
+$$\frac{dI(t)}{d(t)} = -\bar{k}I(t)S(t)$$
 `;
 
 const equation2Text = String.raw`
-$$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$$
+$$\frac{dS(t)}{d(t)} = \lambda \bar{k} I(t)S(t) - \bar{k} S(t) ( \gamma S(t) + \eta R(t)) - \delta S(t)$$
+`;
+
+const equation3Text = String.raw`
+$$\frac{dR(t)}{d(t)} = (1 - \lambda)\bar{k}I(t)S(t) + \bar{k}S(t)(\gamma S(t) + \eta R(t)) + \delta S(t)$$
 `;
 
 const mean_field1 = String.raw`
@@ -47,7 +44,22 @@ class SidePanel extends React.Component {
         return (<MathJaxComponent tex={mean_field1} />)
       }
       case 4: {
+<<<<<<< Updated upstream
         console.log(this.props);
+=======
+        return (<MathJaxComponent tex={equation2Text} />)
+      }
+      case 5: {
+        return (<MathJaxComponent tex={equation2Text} />)
+      }
+      case 6: {
+        return (<MathJaxComponent tex={equation2Text} />)
+      }
+      case 7: {
+        return (<MathJaxComponent tex={equation3Text} />)
+      }
+      default: {
+>>>>>>> Stashed changes
         return (
           <Graph
             gamma={this.props.gamma}

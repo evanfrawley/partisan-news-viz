@@ -8,6 +8,7 @@ class MathJaxComponent extends React.Component {
       loaded: false,
     }
   }
+
   componentDidMount = () => {
     setTimeout(() => {
       this.setState({loaded: true});

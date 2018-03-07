@@ -52,15 +52,15 @@ Spreader -> Stifler
 
 # Scale Free Networks
 
-[Aside]
-  [Equation]
-    \begin{aligned}
-      \frac{dI(t)}{dt} = -\bar{k}I(t)S(t) \\
-      \frac{dS(t)}{dt} = \lambda \bar{k}I(t)S(t) - \bar{k} S(t)( \gamma S(t) + \eta R(t)) - \delta S(t) \\
-      \frac{dR(t)}{dt} = (1 - \lambda) \bar{k}I(t)S(t) + \bar{k}S(t)(\gamma S(t) + \eta R(t)) + \delta S(t)
-    \end{aligned}
-  [/Equation]
-[/Aside]
+// [Aside]
+//   [Equation]
+//     \begin{aligned}
+//       \frac{dI(t)}{dt} = -\bar{k}I(t)S(t) \\
+//       \frac{dS(t)}{dt} = \lambda \bar{k}I(t)S(t) - \bar{k} S(t)( \gamma S(t) + \eta R(t)) - \delta S(t) \\
+//       \frac{dR(t)}{dt} = (1 - \lambda) \bar{k}I(t)S(t) + \bar{k}S(t)(\gamma S(t) + \eta R(t)) + \delta S(t)
+//     \end{aligned}
+//   [/Equation]
+// [/Aside]
 
 A scale-free network is a network which has a degree distribution that follows a power law. That is, there is an exponential relation between the degree of connectivity of a node and its frequency of occurrence in the network where the fraction P(x) of nodes in the network having connections to k other nodes is
 
@@ -126,6 +126,30 @@ Delta: [Display value:delta /]
 [waypoint onEnterViewFully:`sidePanelView = 5`]
 [p]
 5
+[/p]
+[/waypoint]
+
+[waypoint onEnterViewFully:`sidePanelView = 5`]
+[p]
+Praesent dictum interdum tortor ac ultricies. Suspendisse velit libero, fermentum at porta eget, dignissim non nisl. Sed lacus ipsum, ullamcorper eget magna eu, aliquam elementum ligula. Sed posuere orci magna, quis laoreet massa pharetra eget. Donec gravida lacus eu neque semper, ut rutrum lorem tempus. Vestibulum non tristique sapien. Mauris convallis eget sapien eget pharetra. Etiam convallis, neque eu euismod cursus, eros tortor porttitor dui, quis vehicula mauris tortor vitae sapien. Etiam consequat tincidunt cursus. Proin vehicula lacinia lectus. Duis nec tincidunt purus. Cras vel augue enim. Nulla fermentum eu eros id convallis. Morbi at felis convallis, tincidunt nulla non, pharetra quam. Proin porta odio ac leo posuere condimentum. Aenean a est ac ligula vehicula vestibulum.
+[/p]
+[/waypoint]
+
+[waypoint onEnterViewFully:`sidePanelView = 6`]
+[p]
+Praesent dictum interdum tortor ac ultricies. Suspendisse velit libero, fermentum at porta eget, dignissim non nisl. Sed lacus ipsum, ullamcorper eget magna eu, aliquam elementum ligula. Sed posuere orci magna, quis laoreet massa pharetra eget. Donec gravida lacus eu neque semper, ut rutrum lorem tempus. Vestibulum non tristique sapien. Mauris convallis eget sapien eget pharetra. Etiam convallis, neque eu euismod cursus, eros tortor porttitor dui, quis vehicula mauris tortor vitae sapien. Etiam consequat tincidunt cursus. Proin vehicula lacinia lectus. Duis nec tincidunt purus. Cras vel augue enim. Nulla fermentum eu eros id convallis. Morbi at felis convallis, tincidunt nulla non, pharetra quam. Proin porta odio ac leo posuere condimentum. Aenean a est ac ligula vehicula vestibulum.
+[/p]
+[/waypoint]
+
+[waypoint onEnterViewFully:`sidePanelView = 7`]
+[p]
+Praesent dictum interdum tortor ac ultricies. Suspendisse velit libero, fermentum at porta eget, dignissim non nisl. Sed lacus ipsum, ullamcorper eget magna eu, aliquam elementum ligula. Sed posuere orci magna, quis laoreet massa pharetra eget. Donec gravida lacus eu neque semper, ut rutrum lorem tempus. Vestibulum non tristique sapien. Mauris convallis eget sapien eget pharetra. Etiam convallis, neque eu euismod cursus, eros tortor porttitor dui, quis vehicula mauris tortor vitae sapien. Etiam consequat tincidunt cursus. Proin vehicula lacinia lectus. Duis nec tincidunt purus. Cras vel augue enim. Nulla fermentum eu eros id convallis. Morbi at felis convallis, tincidunt nulla non, pharetra quam. Proin porta odio ac leo posuere condimentum. Aenean a est ac ligula vehicula vestibulum.
+[/p]
+[/waypoint]
+
+[waypoint onEnterViewFully:`sidePanelView = 8`]
+[p]
+Praesent dictum interdum tortor ac ultricies. Suspendisse velit libero, fermentum at porta eget, dignissim non nisl. Sed lacus ipsum, ullamcorper eget magna eu, aliquam elementum ligula. Sed posuere orci magna, quis laoreet massa pharetra eget. Donec gravida lacus eu neque semper, ut rutrum lorem tempus. Vestibulum non tristique sapien. Mauris convallis eget sapien eget pharetra. Etiam convallis, neque eu euismod cursus, eros tortor porttitor dui, quis vehicula mauris tortor vitae sapien. Etiam consequat tincidunt cursus. Proin vehicula lacinia lectus. Duis nec tincidunt purus. Cras vel augue enim. Nulla fermentum eu eros id convallis. Morbi at felis convallis, tincidunt nulla non, pharetra quam. Proin porta odio ac leo posuere condimentum. Aenean a est ac ligula vehicula vestibulum.
 [/p]
 [/waypoint]
 [/section]
