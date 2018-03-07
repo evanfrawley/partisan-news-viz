@@ -44,9 +44,6 @@ class SidePanel extends React.Component {
         return (<MathJaxComponent tex={mean_field1} />)
       }
       case 4: {
-<<<<<<< Updated upstream
-        console.log(this.props);
-=======
         return (<MathJaxComponent tex={equation2Text} />)
       }
       case 5: {
@@ -59,7 +56,6 @@ class SidePanel extends React.Component {
         return (<MathJaxComponent tex={equation3Text} />)
       }
       default: {
->>>>>>> Stashed changes
         return (
           <Graph
             gamma={this.props.gamma}
