@@ -52,16 +52,6 @@ Spreader -> Stifler
 
 # Scale Free Networks
 
-// [Aside]
-//   [Equation]
-//     \begin{aligned}
-//       \frac{dI(t)}{dt} = -\bar{k}I(t)S(t) \\
-//       \frac{dS(t)}{dt} = \lambda \bar{k}I(t)S(t) - \bar{k} S(t)( \gamma S(t) + \eta R(t)) - \delta S(t) \\
-//       \frac{dR(t)}{dt} = (1 - \lambda) \bar{k}I(t)S(t) + \bar{k}S(t)(\gamma S(t) + \eta R(t)) + \delta S(t)
-//     \end{aligned}
-//   [/Equation]
-// [/Aside]
-
 A scale-free network is a network which has a degree distribution that follows a power law. That is, there is an exponential relation between the degree of connectivity of a node and its frequency of occurrence in the network where the fraction P(x) of nodes in the network having connections to k other nodes is
 
 P(k) ~ k^ -γ = 1/k^γ

@@ -67,9 +67,6 @@ class SidePanel extends React.Component {
           />
         )
       }
-      default: {
-        return (null)
-      }
     }
   }
 }
