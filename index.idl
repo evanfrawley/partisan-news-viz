@@ -19,7 +19,7 @@
 
 A rumor, in general, refers to an unverified account or explanation of events circulating from person to person and pertaining to an object, event, or issue of public concern. \[[link href:"https://www.sciencedirect.com/science/article/pii/S037843711200934X#br000005"]1[/link]\]
 
-Spreading rumors has many sociological causes, but well studied is its use as a form of social cognition, where people come across novel pieces of information, or rumors and share them with others as an attempt to reduce anxiety and uncertainty. This is especially found in termed **dread** rumors, which refer to some fearsome, or undesirable event. **These dread rumors are spread at a much higher rate than wish rumors** which denote a positive outlook on the rumor context. DiFonzo et al. showed how people come across a rumor, and in order to make sense of the information, they share these dread rumors with other people.
+Spreading rumors has many sociological causes, but well studied is its use as a form of social cognition, where people come across novel pieces of information, or rumors and share them with others as an attempt to reduce anxiety and uncertainty. This is especially found in termed ***dread*** rumors, which refer to some fearsome, or undesirable event. **These dread rumors are spread at a much higher rate than wish rumors** which denote a positive outlook on the rumor context. DiFonzo et al. showed how people come across a rumor, and in order to make sense of the information, they share these dread rumors with other people.
 
 (Source: DiFonzo, P. B. and N. (2014). Problem in Social Interactions on the Internet : Solving Rumor As Social Cognition *, 67(1), 33–49.)
 
@@ -50,9 +50,17 @@ Spreader -> Stifler
 [/p]
 [/waypoint]
 
-[waypoint onEnterViewFully:`sidePanelView = 3`]
-[p]
 # Scale Free Networks
+
+[Aside]
+  [Equation]
+    \begin{aligned}
+      \frac{dI(t)}{dt} = -\bar{k}I(t)S(t) \\
+      \frac{dS(t)}{dt} = \lambda \bar{k}I(t)S(t) - \bar{k} S(t)( \gamma S(t) + \eta R(t)) - \delta S(t) \\
+      \frac{dR(t)}{dt} = (1 - \lambda) \bar{k}I(t)S(t) + \bar{k}S(t)(\gamma S(t) + \eta R(t)) + \delta S(t)
+    \end{aligned}
+  [/Equation]
+[/Aside]
 
 A scale-free network is a network which has a degree distribution that follows a power law. That is, there is an exponential relation between the degree of connectivity of a node and its frequency of occurrence in the network where the fraction P(x) of nodes in the network having connections to k other nodes is 
 
@@ -69,8 +77,6 @@ Barabási and Albert demonstrated that large scale networks self organize into s
 ## Social Networks
 Applied to social networks, this might explain Milgram’s small world phenomena, where there are “six degrees of separation” between you and any other person in the United States. In this case, it is easy to see how people organize into tightly knit communities, with some connections between communities. Some people, however are connected to a larger number of communities like celebrities or politicians who act as hubs between many different communities.
 
-[/p]
-[/waypoint]
 
 [waypoint]
 [p]
