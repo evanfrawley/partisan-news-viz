@@ -46,9 +46,7 @@ class SidePanel extends React.Component {
           <FlowChart />
         )
       }
-      case 3: {
-        return (<MathJaxComponent tex={mean_field1} />)
-      }
+
       case 4: {
         return (<Graph />)
       }
