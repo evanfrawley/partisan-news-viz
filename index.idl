@@ -64,18 +64,9 @@ Spreader -> Stifler
 
 A scale-free network is a network which has a degree distribution that follows a power law. That is, there is an exponential relation between the degree of connectivity of a node and its frequency of occurrence in the network where the fraction P(x) of nodes in the network having connections to k other nodes is 
 
-[Equation]
-  \begin{aligned}
-    P(k) \sim k^{- \gamma} = \frac{1}{k^ \gamma}
-  \end{aligned}
-[/Equation]
+P(k) ~ k^ -γ = 1/k^γ 
 
-where where γ is typically in the range 
-[Equation]
-\begin{aligned}
-  2 < \gamma < 3
-\end{aligned}
-[/Equation]
+where where γ is typically in the range 2 < γ < 3.
 
 TODO: in d3 Explanation with a power-law graph. 1/x^2 where x axis is number of degrees, and y is proportion of nodes with that degree. 
 With dots at (¼, 2), (1/9, 3) (1/100, 10).
@@ -125,5 +116,14 @@ Delta: [Display value:delta /].
 
 [/p]
 [/waypoint]
+
+[waypoint onEnterViewFully:`sidePanelView = 5`]
+[p]
+5
+[/p]
+[/waypoint]
 [/section]
-[Graph/]
+
+[fixed]
+[SidePanel view:sidePanelView /]
+[/fixed]
