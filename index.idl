@@ -50,6 +50,25 @@ Maecenas gravida accumsan ante eu consectetur. Proin dignissim sem et porta accu
 
 [waypoint onEnterViewFully:`sidePanelView = 3`]
 [p]
+[var name:"cluster" value:0 /]
+0.0 [Range value:density min:0 max:1 step:0.1 /] 1.0
+Density: [Display value:density /].
+
+0.0 [Range value:cluster min:0 max:1 step:0.1 /] 1.0
+Clustering Coefficient: [Display value:cluster /].
+
+0.0 [Range value:lambda min:0 max:1 step:0.1 /] 1.0
+Lambda: [Display value:lambda /].
+
+0.0 [Range value:eta min:0 max:1 step:0.1 /] 1.0
+Eta: [Display value:eta /].
+
+0.0 [Range value:gamma min:0 max:1 step:0.1 /] 1.0
+Gamma: [Display value:gamma /].
+
+0.0 [Range value:delta min:0 max:1 step:0.1 /] 1.0
+Delta: [Display value:delta /].
+
 Pellentesque tempor molestie dui pellentesque venenatis. Proin lacinia varius ligula vitae gravida. Phasellus hendrerit purus sit amet volutpat ultrices. Donec feugiat porta massa. Cras lacus lectus, congue at leo sit amet, malesuada cursus ipsum. Donec eget velit et velit placerat vulputate vitae sed enim. Mauris ac leo turpis.
 [/p]
 [/waypoint]

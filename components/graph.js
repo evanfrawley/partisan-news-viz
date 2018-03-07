@@ -54,13 +54,14 @@ class Graph extends D3Component {
         // svg to display network
         this.width = 600;
         this.height = 400;
-        this.svg = d3.select(node).append("svg")
+        this.image = d3.select(node).append("svg")
             .attr("width", this.width)
-            .attr("height", this.height);
+            .attr("height", 1.5 * this.height);
 
-        this.rumors = this.svg.append("svg")
-            .attr("width", this.width)
-            .attr("height", 2 * this.height);
+        this.svg = this.image.append("g")
+
+        this.rumors = this.image.append("g")
+            .attr("transform", "translate(0," + 400 + ")");
 
         this.modelParams = {
             "density": {
@@ -108,7 +109,11 @@ class Graph extends D3Component {
     }
 
     update = (props) => {
+        //TODO @Evan implement property update here
 
+        // set the values like this
+        this.modelParams.lambda.val = 0;
+        console.log(props);
     }
 
     redraw = () => {
@@ -193,7 +198,7 @@ class Graph extends D3Component {
                 .style("stroke", "#666")
 
             this.nodeGroup.selectAll("circle")
-                .on("click", this.infect)
+                .on("mouseup", this.infect)
                 .on("mouseover", (node) => {
                     this.activeNode = node.id;
                     this.tooltip.transition()
@@ -247,14 +252,16 @@ class Graph extends D3Component {
 
         var chart = {};
         chart.rumor = this.rumor
-        chart.margin = {top: 20, right: 20, bottom: 30, left: 30};
+        chart.margin = {top: 5, right: 30, bottom: 30, left: 5};
         chart.width = this.width - chart.margin.left - chart.margin.right;
         chart.height = 150 - chart.margin.top - chart.margin.bottom;
         chart.element = this.rumors
-            .insert("svg", ":first-child")
-            .attr("id", this.rumor)
-            .attr("width", chart.width + chart.margin.left + chart.margin.right)
-            .attr("height", chart.height + chart.margin.top + chart.margin.bottom)
+            //.insert("svg", ":first-child")
+            .append("g")
+                .attr("transform", "translate(0," + 150 * (chart.rumor-1) + ")")
+                .attr("id", this.rumor)
+            //.attr("width", chart.width + chart.margin.left + chart.margin.right)
+            //.attr("height", chart.height + chart.margin.top + chart.margin.bottom)
             .on("mouseover", () => { this.selectedRumor = chart.rumor; setNodeFill(nodeGroup.selectAll("circle")); })
             .on("mouseout", () => { this.selectedRumor = -1; setNodeFill(nodeGroup.selectAll("circle")); });
 
@@ -276,7 +283,7 @@ class Graph extends D3Component {
 
         chart.axisLeft = chart.element.append("g")
             .attr("transform", "translate(" + (chart.margin.left + chart.width) + "," + chart.margin.top + ")")
-            .call(d3.axisLeft(chart.y).ticks(5))
+            .call(d3.axisRight(chart.y).ticks(5))
             .append("text")
             .attr("fill", "#000")
             .attr("transform", "rotate(-90)")
@@ -454,7 +461,7 @@ class Graph extends D3Component {
     setNodeFill = (nodes) => {
         nodes.style("fill", (node) => {
             if (this.selectedRumor == -1) {
-                return "red"; //d3.interpolateReds(Math.pow(1 - (1 / Math.pow(2, node.spreading)), 2));
+                return d3Scale.interpolateReds(Math.pow(1 - (1 / Math.pow(2, node.spreading)), 2));
             } else if (node.rumors[this.selectedRumor] == "spreader") {
                 return "#E57373";
             } else if (node.rumors[this.selectedRumor] == "stifler") {
