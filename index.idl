@@ -4,7 +4,7 @@
 
 [section className:"topSection"]
 
-[waypoint]
+[waypoint onEnterViewFully:`sidePanelView = "initial"`]
 [Header
   title:"Rumor Spreading Dynamics"
   subtitle:"Understanding Multiple Rumor Spreading Through SIR Models"
