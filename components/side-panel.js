@@ -20,6 +20,15 @@ const equation2Text = String.raw`
 $$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$$
 `;
 
+const mean_field1 = String.raw`
+$$\frac{dI(t)}{dt} = -\bar{k}I(t)S(t)$$
+$$\frac{dS(t)}{dt} = \lambda\bar{k}I(t)S(t) - \bar{k}S(t)(\gamma S(t) + \eta R(t)) − \delta S(t)$$
+$$\frac{dR(t)}{dt} = (1 - \lambda) \bar{k}I(t)S(t) + \bar{k}S(t)(\gamma S(t) + \eta R(t)) + \delta S(t)$$
+`;
+
+
+
+
 class SidePanel extends React.Component {
   render() {
     let view = this.props.view;
@@ -30,14 +39,17 @@ class SidePanel extends React.Component {
         )
       }
       case 1: {
+        return (<div></div>)
+      }
+      case 2: {
         return (
           <FlowChart />
         )
       }
-      case 2: {
-        return (<MathJaxComponent tex={equation1Text} />)
-      }
       case 3: {
+        return (<MathJaxComponent tex={mean_field1} />)
+      }
+      case 4: {
         return (<Graph />)
       }
       default: {

@@ -11,7 +11,7 @@ class MathJaxComponent extends React.Component {
   componentDidMount = () => {
     setTimeout(() => {
       this.setState({loaded: true});
-    }, 2000);
+    }, 100);
   }
 
   render() {
