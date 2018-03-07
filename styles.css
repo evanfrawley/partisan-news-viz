@@ -56,38 +56,37 @@
   }
 }
 
-
 .slider {
     position: absolute;
     left: 0px;
     top: 0px;
 }
 
-.links line {
+.links {
   stroke: #999;
   stroke-opacity: 0.6;
 }
 
-line.spreading, line.ignorant, line.stifling {
+.spreading, .ignorant, .stifling {
     fill: none;
     stroke-linejoin: round;
     stroke-linecap: round;
     stroke-width: 1.5;
 }
 
-line.ignorant {
+.ignorant {
     stroke: #2196F3;
 }
 
-line.spreading {
+.spreading {
     stroke: #F44336;
 }
 
-line.stifling {
+.stifling {
     stroke: #4CAF50;
 }
 
-.nodes circle {
+.nodes {
   stroke: #fff;
   stroke-width: 1.5px;
 }
@@ -100,12 +99,24 @@ ul {
     list-style-type: none;
 }
 
-li.spreader {
+.spreader {
     padding: 4px;
     background-color: #E57373;
 }
 
-li.stifler {
+.stifler {
     padding: 4px;
     background-color: #4FC3F7;
+}
+
+.quote {
+  border-left: 4px solid gray;
+  padding: 5px;
+  padding-left: 10px;
+  font-style: italic;
+  color: #807b7b;
+}
+
+.quote > p {
+  margin: 0;
 }

@@ -1,3 +1,4 @@
+import React from "react";
 import D3Component from "idyll-d3-component";
 const d3 = require('d3');
 import {interpolateReds} from "d3-scale-chromatic";
