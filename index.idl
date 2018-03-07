@@ -24,42 +24,53 @@ Spreading rumors has many sociological causes, but well studied is its use as a 
 (Source: DiFonzo, P. B. and N. (2014). Problem in Social Interactions on the Internet : Solving Rumor As Social Cognition *, 67(1), 33–49.)
 
 ## Why are rumors important to study?
-
 [/p]
-[/waypoint]
-[waypoint onEnterViewFully:`sidePanelView = "equations"`]
-[p]
 # Simulating Rumor Transmission with SIR
+[p]
 SIR, or Susceptible, Infected, and Recovered is an epidemiological model which has been widely applied to rumoring theory, and the way that people spread pieces of information across social networks. (Daley and Kendall, Nekovee et al, and Zhao et al) Like vectors of disease, vectors of rumor too can be spread by contact between people in a social network.
 In Daley and Kendall’s pioneering model, the population of people participating in a rumor is split into three distinct groups: people who are unaware of the rumor (ignorants), people who are actively spreading the rumor (spreaders), and people who are not spreading the rumor - either by debunking or just not participating (stiflers).
 
 TODO: actually write about other studies.
 
 This work was later expanded by Zhao, et al. who formalized a model better aligned with reality by taking individual choice into consideration (cite).
-
-<INSERT FLOW CHART HERE>
-Shown in Figure 1 is the flow chart
-Interactions: -> is directed contact
-Spreader -> Ignorant
-λ is the probability that an ig
-Ignorant -> Stifler
-Spreader -> Stifler
-δ is the probability that a spreader spontaneously loses interest in, or forgets about a rumor.
-η is the probability that a spreader turns into a stifler when contacting a stifler.
-γ is the probability that a spreader turns into a stifler when contacting another spreader. Imagine the case when the two spreaders have differing versions of the same rumor; leading the spreader to question the rumor, where γ is restricted to be less than η.
 [/p]
+[div onEnterViewFully:`sidePanelView = "flowchart"`]
+
+Shown in Figure 1 is the flow chart
+
+Interactions: -> is directed contact
+
+Spreader -> Ignorant
+
+λ is the probability that an ig
+
+Ignorant -> Stifler
+
+Spreader -> Stifler
+
+δ is the probability that a spreader spontaneously loses interest in, or forgets about a rumor.
+
+η is the probability that a spreader turns into a stifler when contacting a stifler.
+
+γ is the probability that a spreader turns into a stifler when contacting another spreader. Imagine the case when the two spreaders have differing versions of the same rumor; leading the spreader to question the rumor, where γ is restricted to be less than η.
+
+[/div]
 [/waypoint]
 
+[waypoint onEnterViewFully:`sidePanelView = "equations"`]
 # Scale Free Networks
 
 A scale-free network is a network which has a degree distribution that follows a power law. That is, there is an exponential relation between the degree of connectivity of a node and its frequency of occurrence in the network where the fraction P(x) of nodes in the network having connections to k other nodes is
 
+[Equation]
 P(k) ~ k^ -γ = 1/k^γ
+[/Equation]
 
 where where γ is typically in the range 2 < γ < 3.
 
 TODO: in d3 Explanation with a power-law graph. 1/x^2 where x axis is number of degrees, and y is proportion of nodes with that degree.
 With dots at (¼, 2), (1/9, 3) (1/100, 10).
+[/waypoint]
 
 ## Preferential Attachment
 Barabási and Albert demonstrated that large scale networks self organize into scale-free states, regardless of the source of that network (cite). This follows the property of preferential attachment, or the principle of “the rich get richer”, where in a network the nodes with higher degree are likely to get a higher percentage of new node ties. More formally: the probability that a new node in a network will make a tie to any node is proportional to the degree of that node. This gives the property that local connectivity is free of scale.

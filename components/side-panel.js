@@ -37,7 +37,7 @@ class SidePanel extends React.Component {
       case 1: {
         return (<div></div>)
       }
-      case 2: {
+      case "flowchart": {
         return (
           <FlowChart />
         )
