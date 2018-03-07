@@ -45,9 +45,11 @@ class Equation extends React.PureComponent {
           $this.style('cursor', 'pointer');
           $this.on('mouseover', () => {
             $this.style('color', 'red');
+            $this.style('cursor', 'pointer');
           }).on('mouseout', () => {
             if (!(self.state.showRange && self.state.var === prop)) {
               $this.style('color', 'black');
+              $this.style('cursor', 'default');
             }
           }).on('click', () => {
 

@@ -13,6 +13,7 @@
     "d3-scale-chromatic": "^1.2.0",
     "idyll": "^2.1.7",
     "idyll-d3-component": "^2.0.3",
+    "react-latex": "^1.2.0",
     "react-mathjax-preview": "^0.1.9"
   },
   "devDependencies": {

@@ -4,49 +4,6 @@ const d3 = require('d3');
 import {interpolateReds} from "d3-scale-chromatic";
 const d3Scale = require('d3-scale-chromatic');
 
-/*
-<div class="container top-buffer">
-    <div class="row">
-        <div id="flowchart" class="col-sm-12"></div>
-    </div>
-    <div class="row">
-        <div id="graph" class="col-sm-12 col-md-8">
-            <span class="slider">
-                <label for="density">Density</label>
-                <input id="density" type="range" min="0.01" max="0.02" step="0.0025">
-                <label for="cluster">Clustering Coefficient</label>
-                <input id="cluster" type="range" min="0.5" max="0.9" step="0.1">
-                <label for="lambda"><strong>λ</strong></label>
-                <input id="lambda" type="range" min="0" max="1" step="0.1"><span class="value"/>
-                <label for="eta">η</label>
-                <input id="eta" type="range" min="0" max="1" step="0.1"><span class="value"/>
-                <label for="gamma">γ</label>
-                <input id="gamma" type="range" min="0" max="1" step="0.1"><span class="value"/>
-                <label for="delta">δ</label>
-                <input id="delta" type="range" min="0" max="1" step="0.1"><span class="value"/>
-                </span>
-        </div>
-        <div id="rumor-list" class="col-sm-12 col-md-4">
-        </div>
-        <div id="hist" class="col-sm-4">
-        </div>
-    </div>
-</div>
-
-
-<link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
-<script
-  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-  crossorigin="anonymous"></script>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="https://d3js.org/d3-color.v1.min.js"></script>
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-*/
 class Graph extends D3Component {
 
     initialize = (node, props) => {
@@ -97,11 +54,25 @@ class Graph extends D3Component {
             }
         };
 
+        if (this.props) {
+          let {gamma, delta, eta, lambda, density, cluster} = props;
+          this.modelParams.gamma.val = gamma;
+          this.modelParams.cluster.val = cluster;
+          this.modelParams.delta.val = delta;
+          this.modelParams.eta.val = eta;
+          this.modelParams.lambda.val = lambda;
+          this.modelParams.density.val = density;
+        }
+
         this.linkGroup = this.svg.append("g");
         this.nodeGroup = this.svg.append("g");
 
-        this.tooltip = this.svg.append("div")
-            .attr("class", "tooltip");
+// <foreignobject class="node" x="46" y="22" width="100" height="100">
+        this.tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("position", "fixed")
+            .style("left", 100 + "px")
+            .style("top", 100 + "px");
 
         console.log(this.tooltip);
 
@@ -110,10 +81,14 @@ class Graph extends D3Component {
 
     update = (props) => {
         //TODO @Evan implement property update here
-
-        // set the values like this
-        this.modelParams.lambda.val = 0;
-        console.log(props);
+        let {gamma, delta, eta, lambda, density, cluster} = props;
+        this.modelParams.gamma.val = gamma;
+        this.modelParams.cluster.val = cluster;
+        this.modelParams.delta.val = delta;
+        this.modelParams.eta.val = eta;
+        this.modelParams.lambda.val = lambda;
+        this.modelParams.density.val = density;
+        this.redraw();
     }
 
     redraw = () => {
@@ -121,13 +96,13 @@ class Graph extends D3Component {
         this.totalIndividuals = 0; // for chart viz
         this.activeNode = -1; // for hover effect
 
-        d3.json("https://jessecoleman.github.io/sir-rumor-viz/data_" + 
+        d3.json("https://jessecoleman.github.io/sir-rumor-viz/data_" +
                 this.modelParams.density.val + "_" +
-                this.modelParams.cluster.val + ".json", 
+                this.modelParams.cluster.val + ".json",
                 (error, graph) => {
-//        d3.json("data_" + 
+//        d3.json("data_" +
 //                this.modelParams.density.default + "_" +
-//                this.modelParams.cluster.default + ".json", 
+//                this.modelParams.cluster.default + ".json",
 //                (error, graph) => {
              if (error) throw error;
 
@@ -205,7 +180,7 @@ class Graph extends D3Component {
                         .duration(200)
                         .style("opacity", 1);
                     this.tooltip.html((d) => {
-                        var text = "<ul>";
+                        let text = "<ul>";
                         Object.keys(node.rumors).reverse().forEach((rumor) => {
                             text += "<li class=\"" +
                                 node.rumors[rumor] +
@@ -214,15 +189,14 @@ class Graph extends D3Component {
                         });
                         return text;
                     })
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY) + "px");
                 })
                 .on("mouseout", (node) => {
                     this.activeNode = -1;
                     this.tooltip.transition()
                         .duration(200)
                         .style("opacity", 0);
-                });
+                })
+                .style("curor", "pointer");
         });
 
         this.iter = 0;
@@ -339,9 +313,6 @@ class Graph extends D3Component {
     startInterval = () => {
         d3.interval(() => {
             this.iter++;
-
-            //while (infecting) {}
-
             // interaction between nodes and neighbors
             this.graph.nodes.forEach((node) => {
                 node.neighbors.forEach((n) => {

@@ -30,15 +30,15 @@ Spreading rumors has many sociological causes, but well studied is its use as a 
 [waypoint onEnterViewFully:`sidePanelView = 2`]
 [p]
 # Simulating Rumor Transmission with SIR
-SIR, or Susceptible, Infected, and Recovered is an epidemiological model which has been widely applied to rumoring theory, and the way that people spread pieces of information across social networks. (Daley and Kendall, Nekovee et al, and Zhao et al) Like vectors of disease, vectors of rumor too can be spread by contact between people in a social network. 
-In Daley and Kendall’s pioneering model, the population of people participating in a rumor is split into three distinct groups: people who are unaware of the rumor (ignorants), people who are actively spreading the rumor (spreaders), and people who are not spreading the rumor - either by debunking or just not participating (stiflers). 
+SIR, or Susceptible, Infected, and Recovered is an epidemiological model which has been widely applied to rumoring theory, and the way that people spread pieces of information across social networks. (Daley and Kendall, Nekovee et al, and Zhao et al) Like vectors of disease, vectors of rumor too can be spread by contact between people in a social network.
+In Daley and Kendall’s pioneering model, the population of people participating in a rumor is split into three distinct groups: people who are unaware of the rumor (ignorants), people who are actively spreading the rumor (spreaders), and people who are not spreading the rumor - either by debunking or just not participating (stiflers).
 
 TODO: actually write about other studies.
 
-This work was later expanded by Zhao, et al. who formalized a model better aligned with reality by taking individual choice into consideration (cite).   
+This work was later expanded by Zhao, et al. who formalized a model better aligned with reality by taking individual choice into consideration (cite).
 
 <INSERT FLOW CHART HERE>
-Shown in Figure 1 is the flow chart 
+Shown in Figure 1 is the flow chart
 Interactions: -> is directed contact
 Spreader -> Ignorant
 λ is the probability that an ig
@@ -46,7 +46,7 @@ Ignorant -> Stifler
 Spreader -> Stifler
 δ is the probability that a spreader spontaneously loses interest in, or forgets about a rumor.
 η is the probability that a spreader turns into a stifler when contacting a stifler.
-γ is the probability that a spreader turns into a stifler when contacting another spreader. Imagine the case when the two spreaders have differing versions of the same rumor; leading the spreader to question the rumor, where γ is restricted to be less than η. 
+γ is the probability that a spreader turns into a stifler when contacting another spreader. Imagine the case when the two spreaders have differing versions of the same rumor; leading the spreader to question the rumor, where γ is restricted to be less than η.
 [/p]
 [/waypoint]
 
@@ -62,13 +62,13 @@ Spreader -> Stifler
   [/Equation]
 [/Aside]
 
-A scale-free network is a network which has a degree distribution that follows a power law. That is, there is an exponential relation between the degree of connectivity of a node and its frequency of occurrence in the network where the fraction P(x) of nodes in the network having connections to k other nodes is 
+A scale-free network is a network which has a degree distribution that follows a power law. That is, there is an exponential relation between the degree of connectivity of a node and its frequency of occurrence in the network where the fraction P(x) of nodes in the network having connections to k other nodes is
 
-P(k) ~ k^ -γ = 1/k^γ 
+P(k) ~ k^ -γ = 1/k^γ
 
 where where γ is typically in the range 2 < γ < 3.
 
-TODO: in d3 Explanation with a power-law graph. 1/x^2 where x axis is number of degrees, and y is proportion of nodes with that degree. 
+TODO: in d3 Explanation with a power-law graph. 1/x^2 where x axis is number of degrees, and y is proportion of nodes with that degree.
 With dots at (¼, 2), (1/9, 3) (1/100, 10).
 
 ## Preferential Attachment
@@ -81,7 +81,7 @@ Applied to social networks, this might explain Milgram’s small world phenomena
 [waypoint]
 [p]
 # Generating Scale-Free Networks
-<TODO: cole write about how the networkx model is actually working? -- maybe add a visualization of generation??> 
+<TODO: cole write about how the networkx model is actually working? -- maybe add a visualization of generation??>
 
 ## Barabási–Albert model
 
@@ -95,24 +95,30 @@ To generate a social network, we utilize the Holme and Kim algorithm in the pyth
 # Density and Clustering Coefficient
 
 something something our model allows you to adjust this -- show sliders here!
-[var name:"cluster" value:0 /]
-0.0 [Range value:density min:0 max:1 step:0.1 /] 1.0
-Density: [Display value:density /].
 
-0.0 [Range value:cluster min:0 max:1 step:0.1 /] 1.0
-Clustering Coefficient: [Display value:cluster /].
+[var name:"density" value:0.01 /]
+[Range value:density min:0.01 max:0.02 step:0.0025 /]
+Density: [Display value:density /]
 
-0.0 [Range value:lambda min:0 max:1 step:0.1 /] 1.0
-Lambda: [Display value:lambda /].
+[var name:"cluster" value:0.7 /]
+[Range value:cluster min:0 max:1 step:0.1 /]
+Clustering Coefficient: [Display value:cluster /]
 
-0.0 [Range value:eta min:0 max:1 step:0.1 /] 1.0
-Eta: [Display value:eta /].
+[var name:"lambda" value:0.8 /]
+[Range value:lambda min:0 max:1 step:0.1 /]
+Lambda: [Display value:lambda /]
 
-0.0 [Range value:gamma min:0 max:1 step:0.1 /] 1.0
-Gamma: [Display value:gamma /].
+[var name:"eta" value:0.6 /]
+[Range value:eta min:0 max:1 step:0.1 /]
+Eta: [Display value:eta /]
 
-0.0 [Range value:delta min:0 max:1 step:0.1 /] 1.0
-Delta: [Display value:delta /].
+[var name:"gamma" value:0.3/]
+[Range value:gamma min:0 max:1 step:0.1 /]
+Gamma: [Display value:gamma /]
+
+[var name:"delta" value:0.2 /]
+[Range value:delta min:0 max:1 step:0.1 /]
+Delta: [Display value:delta /]
 
 [/p]
 [/waypoint]
@@ -124,6 +130,12 @@ Delta: [Display value:delta /].
 [/waypoint]
 [/section]
 
+[section]
+[waypoint]
+[Graph gamma:gamma delta:delta eta:eta lambda:lambda cluster:cluster density:density  /]
+[/waypoint]
+[/section]
+
 [fixed]
-[SidePanel view:sidePanelView /]
+[SidePanel view:sidePanelView gamma:gamma delta:delta eta:eta lambda:lambda cluster:cluster density:density /]
 [/fixed]

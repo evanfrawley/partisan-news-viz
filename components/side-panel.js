@@ -26,9 +26,6 @@ $$\frac{dS(t)}{dt} = \lambda\bar{k}I(t)S(t) - \bar{k}S(t)(\gamma S(t) + \eta R(t
 $$\frac{dR(t)}{dt} = (1 - \lambda) \bar{k}I(t)S(t) + \bar{k}S(t)(\gamma S(t) + \eta R(t)) + \delta S(t)$$
 `;
 
-
-
-
 class SidePanel extends React.Component {
   render() {
     let view = this.props.view;
@@ -50,12 +47,20 @@ class SidePanel extends React.Component {
         return (<MathJaxComponent tex={mean_field1} />)
       }
       case 4: {
-        return (<Graph />)
+        console.log(this.props);
+        return (
+          <Graph
+            gamma={this.props.gamma}
+            delta={this.props.delta}
+            eta={this.props.eta}
+            lambda={this.props.lambda }
+            cluster={this.props.cluster}
+            density={this.props.density}
+          />
+        )
       }
       default: {
-        return (
-            <CustomD3Component />
-        )
+        return (null)
       }
     }
   }

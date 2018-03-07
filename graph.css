@@ -14,6 +14,7 @@ line.spreading, line.ignorant, line.stifling {
     stroke-linejoin: round;
     stroke-linecap: round;
     stroke-width: 1.5;
+    cursor: pointer;
 }
 
 line.ignorant {
@@ -28,13 +29,14 @@ line.stifling {
     stroke: #4CAF50;
 }
 
-.nodes circle {
+circle.nodes  {
   stroke: #fff;
   stroke-width: 1.5px;
+  cursor: pointer;
 }
 
-.top-buffer { 
-    margin-top: 20px; 
+.top-buffer {
+    margin-top: 20px;
 }
 
 ul {
