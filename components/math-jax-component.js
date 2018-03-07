@@ -12,16 +12,16 @@ class MathJaxComponent extends React.Component {
   componentDidMount = () => {
     setTimeout(() => {
       this.setState({loaded: true});
-    }, 1000);
+    }, 2000);
   }
 
   render() {
     const { hasError, updateProps, tex, ...props } = this.props;
     let jaxClass = this.state.loaded ? "" : "mathHidden";
     return (
-          <div {...props}>
+          <div {...props} className="flexContainer">
               {this.state.loaded === false &&
-                <div>Loading math...</div>
+                <div className="widthAuto">Loading math...</div>
               }
               <div className={jaxClass}>
                 <MathJax math={tex} />

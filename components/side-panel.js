@@ -5,6 +5,8 @@ import MathJaxComponent from "./math-jax-component.js";
 import Equation from "./default/equation.js";
 import Graph from "./graph.js";
 
+const disneyCDN = "https://cdn.discordapp.com/attachments/417909825096122378/421049879767416842/disneyonice.jpg";
+
 const equation1Text = String.raw`
 $$\frac{dI(t)}{d(t)} = -\bar{k}I(t)S(t)$$
 `;
@@ -29,9 +31,11 @@ class SidePanel extends React.Component {
   render() {
     let view = this.props.view;
     switch(view) {
-      case 0: {
+      case "initial": {
         return (
-            <div>0</div>
+            <div className="flexContainer">
+              <img className="disneyImg" alt="disney on ice rumor example" src={disneyCDN} />
+            </div>
         )
       }
       case 1: {
@@ -40,6 +44,22 @@ class SidePanel extends React.Component {
       case "flowchart": {
         return (
           <FlowChart />
+        )
+      }
+      case "psuedocode": {
+        return (
+          <div>
+            <pre>
+            {`
+  for node in nodes:
+     for nbr in node.neighbors:
+        if 1/(len(node.neighbors)^0.5) > random():
+           for idx, rumor in enumerate(node.rumors):
+              if 1/(2^idx) > random():
+                 interact(node, nbr, rumor)
+`}
+            </pre>
+          </div>
         )
       }
       case "equations": {

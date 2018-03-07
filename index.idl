@@ -1,6 +1,6 @@
 [meta title:"SIR Rumor Dynamics" description:"Modeling the spread of rumors on social networks" /]
 
-[var name:"sidePanelView" value:1 /]
+[var name:"sidePanelView" value:"initial" /]
 
 [section className:"topSection"]
 
@@ -14,7 +14,7 @@
       {name: "Cole Chamberlin", link: "https://github.com/jessecoleman"}
     ]`
   /]
-[p onEnterViewFully:`sidePanelView = 1`]
+[p]
 # Rumors
 
 A rumor, in general, refers to an unverified account or explanation of events circulating from person to person and pertaining to an object, event, or issue of public concern. \[[link href:"https://www.sciencedirect.com/science/article/pii/S037843711200934X#br000005"]1[/link]\]
@@ -34,26 +34,20 @@ TODO: actually write about other studies.
 
 This work was later expanded by Zhao, et al. who formalized a model better aligned with reality by taking individual choice into consideration (cite).
 [/p]
+
 [div onEnterViewFully:`sidePanelView = "flowchart"`]
-
-Shown in Figure 1 is the flow chart
-
-Interactions: -> is directed contact
-
-Spreader -> Ignorant
-
-λ is the probability that an ig
-
-Ignorant -> Stifler
-
-Spreader -> Stifler
 
 δ is the probability that a spreader spontaneously loses interest in, or forgets about a rumor.
 
-η is the probability that a spreader turns into a stifler when contacting a stifler.
+λ is the probability that an ignorant **turns into a spreader**.
 
-γ is the probability that a spreader turns into a stifler when contacting another spreader. Imagine the case when the two spreaders have differing versions of the same rumor; leading the spreader to question the rumor, where γ is restricted to be less than η.
+1 - λ is the probability that an ignorant **turns into a stifler**.
 
+η is the probability that a **spreader turns into a stifler** when contacting a *stifler*.
+
+γ is the probability that a spreader **turns into a stifler** when contacting another *spreader*. Imagine the case when the two spreaders have differing versions of the same rumor; leading the spreader to question the rumor, where γ is restricted to be less than η.
+
+γ is restricted to be less than η because it logically follows that an ignorant has a to have a higher probability of becoming a spreader than a stifler when interacting with a spreader, following the assumptions made in the above papers.
 [/div]
 [/waypoint]
 
@@ -63,7 +57,7 @@ Spreader -> Stifler
 A scale-free network is a network which has a degree distribution that follows a power law. That is, there is an exponential relation between the degree of connectivity of a node and its frequency of occurrence in the network where the fraction P(x) of nodes in the network having connections to k other nodes is
 
 [Equation]
-P(k) ~ k^ -γ = 1/k^γ
+P(k) ~ k^{-γ} = 1/k^γ
 [/Equation]
 
 where where γ is typically in the range 2 < γ < 3.
@@ -80,8 +74,8 @@ Applied to social networks, this might explain Milgram’s small world phenomena
 
 
 [waypoint]
-[p]
 # Generating Scale-Free Networks
+[p  onEnterViewFully:`sidePanelView = "psuedocode"`]
 <TODO: cole write about how the networkx model is actually working? -- maybe add a visualization of generation??>
 
 ## Barabási–Albert model
@@ -102,7 +96,7 @@ something something our model allows you to adjust this -- show sliders here!
 Density: [Display value:density /]
 
 [var name:"cluster" value:0.7 /]
-[Range value:cluster min:0 max:1 step:0.1 /]
+[Range value:cluster min:0.5 max:1 step:0.1 /]
 Clustering Coefficient: [Display value:cluster /]
 
 [var name:"lambda" value:0.8 /]
@@ -126,8 +120,8 @@ Delta: [Display value:delta /]
 [/section]
 
 [section]
-[waypoint]
-[Graph gamma:gamma delta:delta eta:eta lambda:lambda cluster:cluster density:density  /]
+[waypoint onEnterViewFully:`sidePanelView = "none"`]
+[link href:"http://jessecoleman.github.io/sir-rumor-viz/" ]Actual visualization![/link]
 [/waypoint]
 [/section]
 

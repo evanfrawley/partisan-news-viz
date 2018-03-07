@@ -395,3 +395,28 @@ label.margin-toggle:not(.sidenote-number) { display: none; }
                             label { cursor: pointer; }
                             div.table-wrapper, table { width: 85%; }
                             img { width: 100%; } }
+
+.centered {
+  margin-left: auto;
+  margin-left: auto;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.widthAuto {
+  width: auto !important;
+}
+
+.idyll-root {
+  margin-left: 0 !important;
+}
+
+.disneyImg {
+  width: 300px;
+  height: auto;
+}
