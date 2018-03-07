@@ -81,15 +81,24 @@ class Graph extends D3Component {
 
     update = (props) => {
         //TODO @Evan implement property update here
+        let shouldRedraw = false;
         let {gamma, delta, eta, lambda, density, cluster} = props;
+        if (
+          this.modelParams.cluster.val !== cluster ||
+          this.modelParams.density.val !== density
+        ) {
+          shouldRedraw = true;
+        }
         this.modelParams.gamma.val = gamma;
         this.modelParams.cluster.val = cluster;
         this.modelParams.delta.val = delta;
         this.modelParams.eta.val = eta;
         this.modelParams.lambda.val = lambda;
         this.modelParams.density.val = density;
-        this.redraw();
-    }
+        if (shouldRedraw) {
+          this.redraw();
+        }
+}
 
     redraw = () => {
 

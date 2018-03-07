@@ -80,7 +80,7 @@ To generate a social network, we utilize the Holme and Kim algorithm in the pyth
 [/p]
 [/waypoint]
 
-[waypoint onEnterViewFully:`sidePanelView = 4`]
+[waypoint onEnterViewFully:`sidePanelView = "sliders"`]
 [p]
 # Density and Clustering Coefficient
 
@@ -110,36 +110,6 @@ Gamma: [Display value:gamma /]
 [Range value:delta min:0 max:1 step:0.1 /]
 Delta: [Display value:delta /]
 
-[/p]
-[/waypoint]
-
-[waypoint onEnterViewFully:`sidePanelView = 5`]
-[p]
-5
-[/p]
-[/waypoint]
-
-[waypoint onEnterViewFully:`sidePanelView = 5`]
-[p]
-Praesent dictum interdum tortor ac ultricies. Suspendisse velit libero, fermentum at porta eget, dignissim non nisl. Sed lacus ipsum, ullamcorper eget magna eu, aliquam elementum ligula. Sed posuere orci magna, quis laoreet massa pharetra eget. Donec gravida lacus eu neque semper, ut rutrum lorem tempus. Vestibulum non tristique sapien. Mauris convallis eget sapien eget pharetra. Etiam convallis, neque eu euismod cursus, eros tortor porttitor dui, quis vehicula mauris tortor vitae sapien. Etiam consequat tincidunt cursus. Proin vehicula lacinia lectus. Duis nec tincidunt purus. Cras vel augue enim. Nulla fermentum eu eros id convallis. Morbi at felis convallis, tincidunt nulla non, pharetra quam. Proin porta odio ac leo posuere condimentum. Aenean a est ac ligula vehicula vestibulum.
-[/p]
-[/waypoint]
-
-[waypoint onEnterViewFully:`sidePanelView = 6`]
-[p]
-Praesent dictum interdum tortor ac ultricies. Suspendisse velit libero, fermentum at porta eget, dignissim non nisl. Sed lacus ipsum, ullamcorper eget magna eu, aliquam elementum ligula. Sed posuere orci magna, quis laoreet massa pharetra eget. Donec gravida lacus eu neque semper, ut rutrum lorem tempus. Vestibulum non tristique sapien. Mauris convallis eget sapien eget pharetra. Etiam convallis, neque eu euismod cursus, eros tortor porttitor dui, quis vehicula mauris tortor vitae sapien. Etiam consequat tincidunt cursus. Proin vehicula lacinia lectus. Duis nec tincidunt purus. Cras vel augue enim. Nulla fermentum eu eros id convallis. Morbi at felis convallis, tincidunt nulla non, pharetra quam. Proin porta odio ac leo posuere condimentum. Aenean a est ac ligula vehicula vestibulum.
-[/p]
-[/waypoint]
-
-[waypoint onEnterViewFully:`sidePanelView = 7`]
-[p]
-Praesent dictum interdum tortor ac ultricies. Suspendisse velit libero, fermentum at porta eget, dignissim non nisl. Sed lacus ipsum, ullamcorper eget magna eu, aliquam elementum ligula. Sed posuere orci magna, quis laoreet massa pharetra eget. Donec gravida lacus eu neque semper, ut rutrum lorem tempus. Vestibulum non tristique sapien. Mauris convallis eget sapien eget pharetra. Etiam convallis, neque eu euismod cursus, eros tortor porttitor dui, quis vehicula mauris tortor vitae sapien. Etiam consequat tincidunt cursus. Proin vehicula lacinia lectus. Duis nec tincidunt purus. Cras vel augue enim. Nulla fermentum eu eros id convallis. Morbi at felis convallis, tincidunt nulla non, pharetra quam. Proin porta odio ac leo posuere condimentum. Aenean a est ac ligula vehicula vestibulum.
-[/p]
-[/waypoint]
-
-[waypoint onEnterViewFully:`sidePanelView = 8`]
-[p]
-Praesent dictum interdum tortor ac ultricies. Suspendisse velit libero, fermentum at porta eget, dignissim non nisl. Sed lacus ipsum, ullamcorper eget magna eu, aliquam elementum ligula. Sed posuere orci magna, quis laoreet massa pharetra eget. Donec gravida lacus eu neque semper, ut rutrum lorem tempus. Vestibulum non tristique sapien. Mauris convallis eget sapien eget pharetra. Etiam convallis, neque eu euismod cursus, eros tortor porttitor dui, quis vehicula mauris tortor vitae sapien. Etiam consequat tincidunt cursus. Proin vehicula lacinia lectus. Duis nec tincidunt purus. Cras vel augue enim. Nulla fermentum eu eros id convallis. Morbi at felis convallis, tincidunt nulla non, pharetra quam. Proin porta odio ac leo posuere condimentum. Aenean a est ac ligula vehicula vestibulum.
 [/p]
 [/waypoint]
 [/section]

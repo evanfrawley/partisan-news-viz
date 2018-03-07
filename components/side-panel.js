@@ -19,7 +19,9 @@ $$\frac{dR(t)}{d(t)} = (1 - \lambda)\bar{k}I(t)S(t) + \bar{k}S(t)(\gamma S(t) + 
 
 const mean_field1 = String.raw`
 $$\frac{dI(t)}{dt} = -\bar{k}I(t)S(t)$$
+
 $$\frac{dS(t)}{dt} = \lambda\bar{k}I(t)S(t) - \bar{k}S(t)(\gamma S(t) + \eta R(t)) − \delta S(t)$$
+
 $$\frac{dR(t)}{dt} = (1 - \lambda) \bar{k}I(t)S(t) + \bar{k}S(t)(\gamma S(t) + \eta R(t)) + \delta S(t)$$
 `;
 
@@ -40,21 +42,10 @@ class SidePanel extends React.Component {
           <FlowChart />
         )
       }
-      case 3: {
-        return (<MathJaxComponent tex={mean_field1} />)
-      }
-      case 4: {
-        return (<MathJaxComponent tex={equation2Text} />)
-      }
-      case 5: {
-        return (<MathJaxComponent tex={equation2Text} />)
-      }
       case "equations": {
         return (
           <div>
-            <MathJaxComponent tex={equation1Text} />
-            <MathJaxComponent tex={equation2Text} />
-            <MathJaxComponent tex={equation3Text} />
+            <MathJaxComponent tex={mean_field1} />
           </div>
         )
       }
@@ -71,9 +62,7 @@ class SidePanel extends React.Component {
         )
       }
       default: {
-        return (
-          null
-        )
+        return (null)
       }
     }
   }
