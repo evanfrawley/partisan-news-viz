@@ -89,7 +89,7 @@ To generate a social network, we utilize the Holme and Kim algorithm in the pyth
 [p]
 # Density and Clustering Coefficient
 
-something something our model allows you to adjust this -- show sliders here!
+## Graph parameters
 
 [var name:"density" value:0.01 /]
 [Range value:density min:0.01 max:0.02 step:0.0025 /]
@@ -98,6 +98,8 @@ Density: [Display value:density /]
 [var name:"cluster" value:0.7 /]
 [Range value:cluster min:0.5 max:1 step:0.1 /]
 Clustering Coefficient: [Display value:cluster /]
+
+## Rumor parameters
 
 [var name:"lambda" value:0.8 /]
 [Range value:lambda min:0 max:1 step:0.1 /]

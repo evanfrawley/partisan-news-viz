@@ -10,15 +10,16 @@ class Graph extends D3Component {
 
         // svg to display network
         this.width = 600;
-        this.height = 400;
-        this.image = d3.select(node).append("svg")
+        this.height = 800;
+	this.graphHeight = 400;
+        this.svg = d3.select(node).append("svg")
             .attr("width", this.width)
-            .attr("height", 1.5 * this.height);
+            .attr("height", this.height);
 
-        this.svg = this.image.append("g")
+        this.network = this.svg.append("g");
 
-        this.rumors = this.image.append("g")
-            .attr("transform", "translate(0," + 400 + ")");
+        this.rumors = this.svg.append("g")
+            .attr("transform", "translate(0," + this.graphHeight + ")");
 
         this.modelParams = {
             "density": {
@@ -64,8 +65,8 @@ class Graph extends D3Component {
           this.modelParams.density.val = density;
         }
 
-        this.linkGroup = this.svg.append("g");
-        this.nodeGroup = this.svg.append("g");
+        this.linkGroup = this.network.append("g");
+        this.nodeGroup = this.network.append("g");
 
 // <foreignobject class="node" x="46" y="22" width="100" height="100">
         this.tooltip = d3.select("body").append("div")
@@ -109,10 +110,7 @@ class Graph extends D3Component {
                 this.modelParams.density.val + "_" +
                 this.modelParams.cluster.val + ".json",
                 (error, graph) => {
-//        d3.json("data_" +
-//                this.modelParams.density.default + "_" +
-//                this.modelParams.cluster.default + ".json",
-//                (error, graph) => {
+
              if (error) throw error;
 
             console.log(graph);
@@ -127,7 +125,7 @@ class Graph extends D3Component {
 
             let y = d3.scaleLinear()
                 .domain([-1, 1])
-                .range([0, this.height]);
+                .range([0, this.graphHeight]);
 
             graph.nodes.forEach((node) => {
                 this.totalIndividuals++;
@@ -224,8 +222,16 @@ class Graph extends D3Component {
         if (this.rumor == 0) {
             this.startInterval();
         }
-        d3.select(d3.event.target).attr("fill", "red"); //interpolateReds(Math.pow(1 - (1 / Math.pow(2, node.spreading+1)), 2)));
+	//d3.select(d3.event.target).attr("fill", interpolateReds(Math.pow(1 - (1 / Math.pow(2, node.spreading+1)), 2)));
         this.rumor++;
+
+	Object.keys(this.charts).forEach((c) => {
+	    chart = this.charts[c];
+            this.rumors.select("#chart_" + chart.rumor)
+		.transition()
+		.duration(250)
+		.attr("transform", "translate(0," + (150 * (this.rumor - chart.rumor)) + ")")
+	});
 
         this.rumorStates[this.rumor] = {};
         this.rumorStates[this.rumor].ignorant = this.totalIndividuals - 1;
@@ -238,16 +244,24 @@ class Graph extends D3Component {
         chart.margin = {top: 5, right: 30, bottom: 30, left: 5};
         chart.width = this.width - chart.margin.left - chart.margin.right;
         chart.height = 150 - chart.margin.top - chart.margin.bottom;
-        chart.element = this.rumors
-            //.insert("svg", ":first-child")
-            .append("g")
-                .attr("transform", "translate(0," + 150 * (chart.rumor-1) + ")")
-                .attr("id", this.rumor)
-            //.attr("width", chart.width + chart.margin.left + chart.margin.right)
-            //.attr("height", chart.height + chart.margin.top + chart.margin.bottom)
-            .on("mouseover", () => { this.selectedRumor = chart.rumor; setNodeFill(nodeGroup.selectAll("circle")); })
-            .on("mouseout", () => { this.selectedRumor = -1; setNodeFill(nodeGroup.selectAll("circle")); });
+	
+	Object.keys(this.modelParams).forEach((d) => {
+	    chart[d] = this.modelParams[d].val
+	});
 
+        chart.element = this.rumors
+            .append("g")
+	    .attr("id", "chart_" + this.rumor)
+            .attr("transform", "translate(0,-150)")
+	    .style("opacity", 0)
+            .on("mouseover", () => { this.selectedRumor = chart.rumor; this.setNodeFill(this.nodeGroup.selectAll("circle")); })
+            .on("mouseout", () => { this.selectedRumor = -1; this.setNodeFill(this.nodeGroup.selectAll("circle")); });
+
+	chart.element
+	    .transition().duration(250)
+            .attr("transform", "translate(0,0)")
+	    .style("opacity", 1)
+ 
         chart.x = d3.scaleLinear()
             .rangeRound([0, chart.width])
             .domain([this.iter - 20, this.iter]);
@@ -275,7 +289,7 @@ class Graph extends D3Component {
             .attr("text-anchor", "end")
             .text("Ratios");
 
-        chart.line = d3.line()
+	chart.line = d3.line()
             .x((d) => { return chart.margin.left + chart.x(d.iter); })
             .y((d) => { return chart.margin.top + chart.y(d.count); });
 
@@ -315,7 +329,23 @@ class Graph extends D3Component {
             .attr("stroke-width", 1.5)
             .attr("d", chart.line);
 
-        this.charts[this.rumor] = chart;
+       	chart.text = chart.element.append("text")
+	    .text(`λ: ${chart.lambda}`)
+	    .attr("dy", "0.5em");
+	    
+	chart.text = chart.element.append("text")
+	    .text(`η: ${chart.eta}`)
+	    .attr("dy", "2em");
+	
+       	chart.text = chart.element.append("text")
+	    .text(`γ: ${chart.gamma}`)
+	    .attr("dy", "3.5em");
+
+       	chart.text = chart.element.append("text")
+	    .text(`δ: ${chart.delta}`)
+	    .attr("dy", "5em");
+
+	this.charts[this.rumor] = chart;
         this.infecting = false;
     }
 
@@ -339,14 +369,14 @@ class Graph extends D3Component {
                                 spread = true;
                                 if (node.rumors[rumor] == "spreader") {
                                     if (!neighbor.rumors.hasOwnProperty(rumor)) {
-                                        neighbor.newRumors[rumor] = Math.random() < this.modelParams.lambda.val ? "spreader" : "stifler";
+                                        neighbor.newRumors[rumor] = Math.random() < this.charts[rumor].lambda ? "spreader" : "stifler";
                                     } else if (neighbor.rumors[rumor] == "spreader") {
-                                        neighbor.newRumors[rumor] = Math.random() > this.modelParams.gamma.val ? "spreader" : "stifler";
+                                        neighbor.newRumors[rumor] = Math.random() > this.charts[rumor].gamma ? "spreader" : "stifler";
                                     }
                                 } else if (node.rumors[rumor] == "stifler" && neighbor.rumors[rumor] == "spreader") {
-                                    neighbor.newRumors[rumor] = Math.random() > this.modelParams.eta.val ? "spreader" : "stifler";
+                                    neighbor.newRumors[rumor] = Math.random() > this.charts[rumor].eta ? "spreader" : "stifler";
                                 }
-                            } else if (Math.random() < this.modelParams.delta.val) {
+                            } else if (Math.random() < this.charts[rumor].delta) {
                                 // probability that node forgets rumor
                                 node.newRumors[rumor] = "stifler";
                             }
