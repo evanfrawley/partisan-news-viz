@@ -71,14 +71,14 @@ class SidePanel extends React.Component {
       }
       case "sliders": {
         return (
-          <Graph
+          <div id="graph-container" height="800"><Graph
             gamma={this.props.gamma}
             delta={this.props.delta}
             eta={this.props.eta}
             lambda={this.props.lambda }
             cluster={this.props.cluster}
             density={this.props.density}
-          />
+          /></div>
         )
       }
       default: {
