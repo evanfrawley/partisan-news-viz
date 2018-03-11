@@ -85,6 +85,8 @@ To generate a social network, we utilize the Holme and Kim algorithm in the pyth
 [/p]
 [/waypoint]
 
+# Spreading Dynamics
+
 [waypoint onEnterViewFully:`sidePanelView = "sliders"`]
 [p]
 # Density and Clustering Coefficient

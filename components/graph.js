@@ -16,7 +16,8 @@ class Graph extends D3Component {
             .attr("width", this.width)
             .attr("height", this.height);
 
-        this.network = this.svg.append("g");
+        this.network = this.svg.append("g")
+            .attr("id", "network");
 
         this.rumors = this.svg.append("g")
             .attr("transform", "translate(0," + this.graphHeight + ")");
@@ -68,14 +69,8 @@ class Graph extends D3Component {
         this.linkGroup = this.network.append("g");
         this.nodeGroup = this.network.append("g");
 
-// <foreignobject class="node" x="46" y="22" width="100" height="100">
-        this.tooltip = d3.select("body").append("div")
-            .attr("class", "tooltip")
-            .style("position", "fixed")
-            .style("left", 100 + "px")
-            .style("top", 100 + "px");
-
-        console.log(this.tooltip);
+        this.tooltip = this.network.append("g")
+            .attr("class", "tooltip");
 
         this.redraw();
     }
@@ -106,6 +101,11 @@ class Graph extends D3Component {
         this.totalIndividuals = 0; // for chart viz
         this.activeNode = -1; // for hover effect
 
+        this.rumors.selectAll("g").remove();
+        if(this.interval) {
+            this.interval.stop();
+        }
+
         d3.json("https://jessecoleman.github.io/sir-rumor-viz/data_" +
                 this.modelParams.density.val + "_" +
                 this.modelParams.cluster.val + ".json",
@@ -121,11 +121,11 @@ class Graph extends D3Component {
 
             let x = d3.scaleLinear()
                 .domain([-1, 1])
-                .range([0, this.width]);
+                .range([10, this.width - 10]);
 
             let y = d3.scaleLinear()
                 .domain([-1, 1])
-                .range([0, this.graphHeight]);
+                .range([10, this.graphHeight - 10]);
 
             graph.nodes.forEach((node) => {
                 this.totalIndividuals++;
@@ -177,25 +177,43 @@ class Graph extends D3Component {
                 .attr("cx", (d) => { return x(d.x); })
                 .attr("cy", (d) => { return y(d.y); })
                 .attr("fill", (d) => { return interpolateReds(0); })
-                .style("stroke", "#666")
+                .style("stroke", "#888")
 
             this.nodeGroup.selectAll("circle")
                 .on("mouseup", this.infect)
                 .on("mouseover", (node) => {
+
+                    console.log("hover")
+
                     this.activeNode = node.id;
-                    this.tooltip.transition()
+
+                    this.tooltip
+                        .attr("transform", `translate(
+                            ${d3.event.clientX - document.getElementById("network").getBoundingClientRect().x}, 
+                            ${d3.event.clientY - document.getElementById("network").getBoundingClientRect().y})`)
+                        .transition()
                         .duration(200)
                         .style("opacity", 1);
-                    this.tooltip.html((d) => {
-                        let text = "<ul>";
-                        Object.keys(node.rumors).reverse().forEach((rumor) => {
-                            text += "<li class=\"" +
-                                node.rumors[rumor] +
-                                "\">" + rumor + " " +
-                                node.rumors[rumor] + "</li>";
+                    
+                    let text = [];
+                    let index = 0;
+                    console.log(node.rumors);
+
+                    Object.keys(node.rumors).reverse().forEach((rumor) => {
+                        text.push({
+                            "rumor": rumor,
+                            "status": node.rumors[rumor], 
+                            "position": index
                         });
-                        return text;
-                    })
+                        index++;
+                    });
+ 
+                    this.tooltip.selectAll("text")
+                        .data(text)
+                        .enter().append("text")
+                        .text((d) => { return d.rumor + " " + d.status; })
+                        .attr("y", (d) => { return 1.5 * d.position + "em"; });
+                        
                 })
                 .on("mouseout", (node) => {
                     this.activeNode = -1;
@@ -239,7 +257,7 @@ class Graph extends D3Component {
         this.rumorStates[this.rumor].stifling = 0;
         node.rumors[this.rumor] = "spreader";
 
-        var chart = {};
+        let chart = {};
         chart.rumor = this.rumor
         chart.margin = {top: 5, right: 30, bottom: 30, left: 5};
         chart.width = this.width - chart.margin.left - chart.margin.right;
@@ -251,11 +269,19 @@ class Graph extends D3Component {
 
         chart.element = this.rumors
             .append("g")
-	    .attr("id", "chart_" + this.rumor)
+            .attr("id", "chart_" + this.rumor)
             .attr("transform", "translate(0,-150)")
-	    .style("opacity", 0)
+            .style("opacity", 0)
             .on("mouseover", () => { this.selectedRumor = chart.rumor; this.setNodeFill(this.nodeGroup.selectAll("circle")); })
             .on("mouseout", () => { this.selectedRumor = -1; this.setNodeFill(this.nodeGroup.selectAll("circle")); });
+
+        chart.element
+            .append("rect")
+            .attr("x", chart.margin.left)
+            .attr("y", chart.margin.top)
+            .attr("width", chart.width)
+            .attr("height", chart.height)
+            .attr("opacity", 0);
 
 	chart.element
 	    .transition().duration(250)
@@ -350,7 +376,7 @@ class Graph extends D3Component {
     }
 
     startInterval = () => {
-        d3.interval(() => {
+        this.interval = d3.interval(() => {
             this.iter++;
             // interaction between nodes and neighbors
             this.graph.nodes.forEach((node) => {
@@ -417,14 +443,29 @@ class Graph extends D3Component {
                 });
 
                 if (node.id == this.activeNode) {
-                    this.tooltip.html((d) => {
-                        var text = "<ul>";
-                        Object.keys(node.rumors).reverse().forEach((rumor) => {
-                            text += "<li class=\"" + node.rumors[rumor] + "\">" +
-                                rumor + " " + node.rumors[rumor] + "</li>";
-                        })
-                        return text;
-                    })
+
+                    let text = [];
+                    let index = 0;
+
+                    Object.keys(node.rumors).reverse().forEach((rumor) => {
+                        console.log(rumor);
+                        text.push({
+                            "rumor": rumor, 
+                            "status": node.rumors[rumor], 
+                            "position": index
+                        });
+                        index++;
+                    });
+ 
+                    let tooltipText = this.tooltip.selectAll("text")
+                        .data(text)
+                        .enter().append("text")
+                        .text((d) => { return d.rumor + " " + d.status; })
+                        .attr("y", (d) => { return 1.5 * d.position + "em"; });
+
+                    tooltipText
+                        .exit().remove();
+                        
                 }
             });
 
