@@ -87,10 +87,10 @@ To generate a social network, we utilize the Holme and Kim algorithm in the pyth
 
 # Spreading Dynamics
 
-[waypoint onEnterViewFully:`sidePanelView = "sliders"`]
 [p]
 # Density and Clustering Coefficient
 
+[waypoint onEnterViewFully:`sidePanelView = "none"`]
 ## Graph parameters
 
 [var name:"density" value:0.01 /]
@@ -119,13 +119,9 @@ Gamma: [Display value:gamma /]
 [Range value:delta min:0 max:1 step:0.1 /]
 Delta: [Display value:delta /]
 
-[/p]
-[/waypoint]
-[/section]
+[Graph view:sidePanelView gamma:gamma delta:delta eta:eta lambda:lambda cluster:cluster density:density /]
 
-[section]
-[waypoint onEnterViewFully:`sidePanelView = "none"`]
-[link target:"_blank" href:"http://jessecoleman.github.io/sir-rumor-viz/" ]Actual visualization![/link]
+[/p]
 [/waypoint]
 [/section]
 

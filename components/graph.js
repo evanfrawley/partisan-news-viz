@@ -9,37 +9,31 @@ class Graph extends D3Component {
     initialize = (node, props) => {
 
         // svg to display network
-        this.width = 600;
-        this.height = 850;
-        this.graphHeight = 400;
+        this.width = 1200;
+        this.height = 650;
+        this.graphHeight = 650;
         this.svg = d3.select(node).append("svg")
+            .attr("id", "network")
             .attr("width", this.width)
-            .attr("height", this.height);
+            .attr("height", this.height)
+            .attr("transform", "translate(0,-600)")
+            .attr("pointer-events", "none");
+
 
         this.network = this.svg.append("g")
-            .attr("id", "network");
+            .attr("id", "network")
+            .attr("transform", "translate(400,0)")
+            .attr("pointer-events", "auto");
 
         this.rumors = this.svg.append("g")
             .attr("transform", "translate(0," + this.graphHeight + ")");
 
-        this.modelParams = {
-            "density": 0.01,
-            "cluster": 0.7,
-            "lambda": 0.8,
-            "eta": 0.6,
-            "gamma": 0.3,
-            "delta": 0.2
-        };
-
-        if (this.props) {
-            let {gamma, delta, eta, lambda, density, cluster} = props;
-            this.modelParams.gamma = gamma;
-            this.modelParams.cluster = cluster;
-            this.modelParams.delta = delta;
-            this.modelParams.eta = eta;
-            this.modelParams.lambda = lambda;
-            this.modelParams.density = density;
-        }
+        this.density = props.density;
+        this.cluster = props.cluster;
+        this.lambda = props.lambda;
+        this.eta = props.eta;
+        this.gamma = props.gamma;
+        this.delta = props.delta;
 
         this.linkGroup = this.network.append("g");
         this.nodeGroup = this.network.append("g");
@@ -54,16 +48,16 @@ class Graph extends D3Component {
         let shouldRedraw = false;
         let {gamma, delta, eta, lambda, density, cluster} = props;
         if (
-            this.modelParams.cluster !== cluster ||
-            this.modelParams.density !== density
+            this.cluster !== cluster ||
+            this.density !== density
         ) { shouldRedraw = true; }
 
-        this.modelParams.gamma = gamma;
-        this.modelParams.cluster = cluster;
-        this.modelParams.delta = delta;
-        this.modelParams.eta = eta;
-        this.modelParams.lambda = lambda;
-        this.modelParams.density = density;
+        this.density = density;
+        this.cluster = cluster;
+        this.lambda = lambda;
+        this.gamma = gamma;
+        this.eta = eta;
+        this.delta = delta;
 
         if (shouldRedraw) {
             this.redraw();
@@ -71,6 +65,11 @@ class Graph extends D3Component {
 }
 
     redraw = () => {
+
+        this.height = 650;
+        
+        this.svg.transition().duration(150)
+            .attr("height", this.height);
 
         this.totalIndividuals = 0; // for chart viz
         this.activeNode = -1; // for hover effect
@@ -81,9 +80,12 @@ class Graph extends D3Component {
         }
 
         d3.json("https://jessecoleman.github.io/sir-rumor-viz/data_" +
-                this.modelParams.density + "_" +
-                this.modelParams.cluster + ".json",
+                this.density + "_" +
+                this.cluster + ".json",
                 (error, graph) => {
+
+            console.log(this.density);
+            console.log(this.cluster);
 
             if (error) throw error;
 
@@ -93,7 +95,7 @@ class Graph extends D3Component {
 
             let x = d3.scaleLinear()
                 .domain([-1, 1])
-                .range([10, this.width - 10]);
+                .range([10, this.width - 410]);
 
             let y = d3.scaleLinear()
                 .domain([-1, 1])
@@ -226,6 +228,11 @@ class Graph extends D3Component {
 
     infect = (node) => {
 
+        this.height += 150;
+        console.log(this.height);
+        this.svg.transition().duration(150)
+            .attr("height", this.height);
+
         this.infecting = true;
         if (this.rumor == 0) {
             this.startInterval();
@@ -247,9 +254,10 @@ class Graph extends D3Component {
         this.rumorStates[this.rumor].spreading = 1;
         this.rumorStates[this.rumor].stifling = 0;
         // set parameters for rumor
-        Object.keys(this.modelParams).forEach((d) => {
-            this.rumorStates[this.rumor][d] = this.modelParams[d]
-        });
+        this.rumorStates[this.rumor].lambda = this.lambda;
+        this.rumorStates[this.rumor].gamma = this.gamma;
+        this.rumorStates[this.rumor].eta = this.eta;
+        this.rumorStates[this.rumor].delta = this.delta;
 
         node.rumors[this.rumor] = "spreader";
 
@@ -259,17 +267,12 @@ class Graph extends D3Component {
         chart.width = this.width - chart.margin.left - chart.margin.right;
         chart.height = 150 - chart.margin.top - chart.margin.bottom;
 	
-        // TODO check if this can be removed
-        // set parameters for chart
-        Object.keys(this.modelParams).forEach((d) => {
-            chart[d] = this.modelParams[d]
-        });
-
         chart.element = this.rumors
             .append("g")
             .attr("id", "chart_" + this.rumor)
             .attr("transform", "translate(0,-150)")
             .style("opacity", 0)
+            .attr("pointer-events", "auto")
             .on("mouseover", () => { this.selectedRumor = chart.rumor; this.setNodeFill(this.nodeGroup.selectAll("circle")); })
             .on("mouseout", () => { this.selectedRumor = -1; this.setNodeFill(this.nodeGroup.selectAll("circle")); });
 
@@ -294,7 +297,7 @@ class Graph extends D3Component {
 
         chart.x = d3.scaleLinear()
             .rangeRound([0, chart.width])
-            .domain([this.iter - 20, this.iter]);
+            .domain([this.iter - 50, this.iter]);
 
         chart.y = d3.scaleLinear()
             .rangeRound([chart.height, 0])
@@ -360,19 +363,19 @@ class Graph extends D3Component {
             .attr("d", chart.line);
 
        	chart.text = chart.element.append("text")
-            .text(`λ: ${chart.lambda}`)
+            .text(`λ: ${this.rumorStates[chart.rumor].lambda}`)
             .attr("dy", "0.5em");
 	    
         chart.text = chart.element.append("text")
-            .text(`η: ${chart.eta}`)
+            .text(`η: ${this.rumorStates[chart.rumor].eta}`)
             .attr("dy", "2em");
 	
        	chart.text = chart.element.append("text")
-            .text(`γ: ${chart.gamma}`)
+            .text(`γ: ${this.rumorStates[chart.rumor].gamma}`)
             .attr("dy", "3.5em");
 
        	chart.text = chart.element.append("text")
-            .text(`δ: ${chart.delta}`)
+            .text(`δ: ${this.rumorStates[chart.rumor].delta}`)
             .attr("dy", "5em");
 
         this.charts[this.rumor] = chart;
@@ -499,7 +502,7 @@ class Graph extends D3Component {
                 chart.data.spreading.push({"iter": this.iter, "count": this.rumorStates[r].spreading});
                 chart.data.stifling.push({"iter": this.iter, "count": this.rumorStates[r].stifling});
 
-                chart.x.domain([this.iter - 20, this.iter]);
+                chart.x.domain([this.iter - 50, this.iter]);
                 chart.axisBottom
                     .call(d3.axisBottom(chart.x).ticks(10))
                 chart.axisLeft
